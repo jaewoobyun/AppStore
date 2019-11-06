@@ -40,6 +40,4 @@ class Ratings_Reviews: UIViewController {
 
 }
 
-class ReviewCell: UIView {
-	
-}
+

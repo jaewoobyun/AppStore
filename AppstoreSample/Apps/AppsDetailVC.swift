@@ -16,6 +16,7 @@ class AppsDetailVC: UIViewController {
 	var rankNumber: Int? = 0
 	var appID: String? = ""
 	var appsDetailData: AppsDetailData?
+	var appReviewData: AppReviewData?
 	
 	//MARK: - Outlets
 	@IBOutlet weak var appIcon: UIImageView!
@@ -45,6 +46,8 @@ class AppsDetailVC: UIViewController {
 	@IBOutlet weak var appDescription: UILabel!
 	@IBOutlet weak var appDeveloper: UILabel!
 	
+	@IBOutlet weak var tapToRateView: UIView!
+	
 	@IBOutlet weak var userRatingLabel: UILabel!
 	@IBOutlet weak var fivestarRating: UIProgressView!
 	@IBOutlet weak var fourstarRating: UIProgressView!
@@ -56,8 +59,9 @@ class AppsDetailVC: UIViewController {
 	
 	//TODO: Tap to Rate:
 	
+	@IBOutlet weak var ReviewCellStack: UIStackView!
 	
-	//TODO: ReviewCell
+	
 	
 	@IBOutlet weak var providerLabel: UILabel!
 	@IBOutlet weak var sizeLabel: UILabel!
@@ -88,6 +92,7 @@ class AppsDetailVC: UIViewController {
 		
 		networkService.delegate = self
 		networkService.requestGetAppDetailData(appId: appID!)
+		networkService.requestGetAppReviewData(appId: appID!)
 		
 		setupLayout()
 		
@@ -111,6 +116,8 @@ class AppsDetailVC: UIViewController {
 		iPadPreview.isHidden = true
 		iphoneView.isHidden = true
 		
+		tapToRateView.isHidden = true
+		
 	}
 	
 	@IBAction func openDescriptionAction(_ sender: UIButton) {
@@ -133,6 +140,10 @@ class AppsDetailVC: UIViewController {
 	
 	@IBAction func onPressDeveloper(_ sender: UIButton) {
 		print("user clicked Developer info")
+	}
+	
+	@IBAction func developerWebsiteTapped(sender: UILabel!) {
+		
 	}
 	/*
 	// MARK: - Navigation
@@ -196,7 +207,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			
 			if let screenshotUrls = result[0].screenshotUrls {
 				print("-------------screenshotUrls----------")
-				print(screenshotUrls)
+//				print(screenshotUrls)
 				
 				
 				for v in iPhonePreviewStack.arrangedSubviews {
@@ -206,6 +217,8 @@ extension AppsDetailVC: NetworkServiceProtocol {
 				for i in screenshotUrls.indices {
 					let previews: UIImageView = UIImageView(frame: CGRect.zero)
 					previews.downloaded(from: screenshotUrls[i], contentMode: UIView.ContentMode.scaleAspectFit)
+					previews.layer.cornerRadius = 10
+					previews.clipsToBounds = true
 //					previews.backgroundColor = UIColor.black
 					
 //					previews ==> auto ==> 200
@@ -231,6 +244,8 @@ extension AppsDetailVC: NetworkServiceProtocol {
 					for i in ipadScreenshotUrls.indices {
 						let previews: UIImageView = UIImageView(frame: CGRect.zero)
 //						previews.backgroundColor = UIColor.black
+						previews.layer.cornerRadius = 10
+						previews.clipsToBounds = true
 						
 						previews.downloaded(from: ipadScreenshotUrls[i], contentMode: UIView.ContentMode.scaleAspectFit)
 						iPadPreviewStack.addArrangedSubview(previews)
@@ -278,11 +293,156 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			ageRatingLabel.text = String(describing: result[0].contentAdvisoryRating!)
 			//		developerWebsiteLabel.text =
 			copyrightLabel.text = entry?.rights.label ?? "none"
+			
 		}
+		
+		
+
 		
 	}
 	
+	func responseGetReviewData(appReviewData: AppReviewData) {
+		self.appReviewData = nil
+		self.appReviewData = appReviewData
+		print("!!!!!!!!!!!!!REQUESTING REVIEW DATA COMPLETE!!!!!!!!!!!!")
+		
+		self.isRequesting = false
+		
+		var totalFiveRatings:Float = 0
+		var totalFourRatings:Float = 0
+		var totalThreeRatings:Float = 0
+		var totalTwoRatings:Float = 0
+		var totalOneRatings:Float = 0
+		var totalZeroRatings:Float = 0
+		
+		if let entry = appReviewData.feed?.entry {
+			for i in 0..<entry.count {
+				if entry[i].imRating?.label == "5" {
+					totalFiveRatings += 1
+				}
+				if entry[i].imRating?.label == "4" {
+					totalFourRatings += 1
+				}
+				if entry[i].imRating?.label == "3" {
+					totalThreeRatings += 1
+				}
+				if entry[i].imRating?.label == "2" {
+					totalTwoRatings += 1
+				}
+				if entry[i].imRating?.label == "1" {
+					totalOneRatings += 1
+				}
+				if entry[i].imRating?.label == "0" {
+					totalZeroRatings += 1
+				}
+			}
+		}
+		
+		self.fivestarRating.setProgress(totalFiveRatings / 50, animated: true)
+		self.fourstarRating.setProgress(totalFourRatings / 50, animated: true)
+		self.threestarRating.setProgress(totalThreeRatings / 50, animated: true)
+		self.twostarRating.setProgress(totalTwoRatings / 50, animated: true)
+		self.onestarRating.setProgress(totalOneRatings / 50, animated: true)
+		
+//		let reviewData:[String] = ["1","2","3","4","5"]
+//
+//		for i in 0..<reviewData.count {
+//			let view = Bundle.loadView(fromNib: "ReviewCell", withType: ReviewCell.self)
+//			ReviewCellStack.addArrangedSubview(view)
+//			view.snp.makeConstraints { (make) in
+//				make.width.equalTo(300)
+//			}
+//		}
 
+//		let entry = appReviewData.feed?.entry ?? []
+//
+//		print(appReviewData.feed?.entry?[0].author)
+//
+//
+//		for i in 0..<entry.count {
+//			if i == 0 {
+////				entry[i]. ????
+//			}
+//		}
+		
+
+				
+		//		if let entry = appReviewData.feed?.entry, entry.count > 0 {
+		//			for i in 0..<entry.count {
+		//				if i == 0 {
+		//					//i번째 데이터가 없다. 내가원하는 데이터가 없는듯?
+		//					entry[0]
+		//				}
+		//			}
+		//		} else {
+		//			//아예 엔트리가 없다. 이떄는 통신 불안정으로 처리한다.
+		//		}
+		//
+		//		for i in 0..<(appReviewData.feed?.entry ?? []).count {
+		//
+		//		}
+
+		
+		guard let feed = appReviewData.feed else {
+			print("Error: No feed?")
+			return
+		}
+		
+		guard let entry = feed.entry else {
+			print("Error: No Entry?")
+			return
+		}
+		
+		for index in 0..<entry.count {
+			let data = entry[index]
+			
+			let reviewCellInstance = Bundle.loadView(fromNib: "ReviewCell", withType: ReviewCell.self)
+			reviewCellInstance.wrapper.layer.cornerRadius = 10
+			reviewCellInstance.wrapper.clipsToBounds = true
+			
+			reviewCellInstance.titleLabel.text = data.title?.label
+			reviewCellInstance.dateLabel.text = "Today for now?" //TODO: change
+			
+			var starRating = ""
+			if data.imRating?.label == "5" {
+				starRating = "★★★★★"
+			}
+			else if data.imRating?.label == "4" {
+				starRating = "★★★★☆"
+			}
+			else if data.imRating?.label == "3" {
+				starRating = "★★★☆☆"
+			}
+			else if data.imRating?.label == "2" {
+				starRating = "★★☆☆☆"
+			}
+			else if data.imRating?.label == "1" {
+				starRating = "★☆☆☆☆"
+			}
+			else if data.imRating?.label == "0" {
+				starRating = "☆☆☆☆☆"
+			}
+			
+			
+			reviewCellInstance.fiveStarLabel.text = starRating
+			reviewCellInstance.nicknameLabel.text = data.author?.name?.label
+			reviewCellInstance.reviewContentLabel.text = data.content?.label
+			
+			ReviewCellStack.addArrangedSubview(reviewCellInstance)
+			
+			let w = Double(UIScreen.main.bounds.size.width)
+			
+			reviewCellInstance.snp.makeConstraints { (make) in
+				make.width.equalTo(w)
+			}
+//			if index == 1 {
+//				let oneData = entry[1]
+//				//카운트가 1개라면
+//				//여긴 절대 못들어옴.
+//			}
+		}
+		
+	}
 	
 	
 }

@@ -16,11 +16,13 @@ protocol NetworkServiceProtocol {
 	///앱데이터 요청 후 정상적으로 요청이 왔을때.
 	func responseGetData(financeData: FinanceData)
 	func responseGetAppData(appsDetailData: AppsDetailData)
+	func responseGetReviewData(appReviewData: AppReviewData)
 }
 
 extension NetworkServiceProtocol {
 	func responseGetData(financeData: FinanceData){}
 	func responseGetAppData(appsDetailData: AppsDetailData){}
+	func responseGetReviewData(appReviewData: AppReviewData){}
 }
 
 class NetworkService {
@@ -85,7 +87,7 @@ class NetworkService {
 //				print("jsonData: ", jsonData)
 				do {
 					let appDetailData = try JSONDecoder().decode(AppsDetailData.self, from: jsonData)
-					print("appDetailData!!:", appDetailData)
+//					print("appDetailData!!:", appDetailData)
 					DispatchQueue.main.async {
 						self.delegate?.responseGetAppData(appsDetailData: appDetailData)
 						
@@ -102,6 +104,43 @@ class NetworkService {
 		task.resume()
 		print("------")
 	}
+	
+	func requestGetAppReviewData(appId: String, sortBy: String = "mostRecent") {
+		let SCHEMA: String = "https://"
+		let HOST: String = "itunes.apple.com"
+		let requestUrl = URL(string: SCHEMA + HOST + "/kr/rss/customerreviews/id=" + appId + "/sortBy=" + sortBy + "/json")
+		var request = URLRequest(url: requestUrl!)
+		request.httpMethod = "GET"
+		request.httpBody = nil
+		request.addValue("application/x-www-for-urlencoded", forHTTPHeaderField: "Content-Type")
+		
+		let task = URLSession.shared.dataTask(with: requestUrl!) { (data, response, error) in
+			if let err = error {
+				print("data task error? :", err)
+				NSLog("Error has Occurred: \(err.localizedDescription)")
+				return
+			}
+			
+			if let jsonData = data {
+				print(jsonData)
+				do {
+					let appReviewData = try JSONDecoder().decode(AppReviewData.self, from: jsonData)
+//					print("appReviewData!!: ", appReviewData)
+					DispatchQueue.main.async {
+						self.delegate?.responseGetReviewData(appReviewData: appReviewData)
+					}
+				}
+				catch let error {
+					print("parsing Error??: ", error)
+					self.delegate?.failRequest()
+				}
+			}
+			
+		}
+		task.resume()
+		print("------")
+	}
+	
 
 }
 

@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		321ACED806E8F80FB916B54C /* Pods_AppstoreSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BEE3B907BA8643013D04B4 /* Pods_AppstoreSample.framework */; };
+		CC2E16EF23725EC80090973D /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E16EE23725EC80090973D /* ReviewCell.swift */; };
+		CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC39F6D6237286A800E8A57D /* AppReviewData.swift */; };
 		CC435BFE235FE07D00EB4A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC435BFD235FE07D00EB4A82 /* AppDelegate.swift */; };
 		CC435C00235FE07E00EB4A82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC435BFF235FE07E00EB4A82 /* SceneDelegate.swift */; };
 		CC435C05235FE07E00EB4A82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC435C03235FE07E00EB4A82 /* Main.storyboard */; };
 		CC435C07235FE08100EB4A82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC435C06235FE08100EB4A82 /* Assets.xcassets */; };
 		CC435C0A235FE08100EB4A82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC435C08235FE08100EB4A82 /* LaunchScreen.storyboard */; };
 		CC435C13235FE28800EB4A82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC435C11235FE28800EB4A82 /* TabBarController.swift */; };
-		CC7A16BA237166EF00EAA012 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7A16B8237166EF00EAA012 /* ReviewVC.swift */; };
-		CC7A16BB237166EF00EAA012 /* ReviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC7A16B9237166EF00EAA012 /* ReviewVC.xib */; };
+		CC7A16BF2372576700EAA012 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC7A16BE2372576700EAA012 /* ReviewCell.xib */; };
 		CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B5235FE7160097FF99 /* TodayVC.swift */; };
 		CC9F16B8235FE7370097FF99 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B7235FE7370097FF99 /* GameVC.swift */; };
 		CC9F16C4235FF5F30097FF99 /* TodayItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16C3235FF5F30097FF99 /* TodayItemCell.swift */; };
@@ -45,6 +46,8 @@
 		17BEE3B907BA8643013D04B4 /* Pods_AppstoreSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppstoreSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588E6432639831CE111E26BC /* Pods-AppstoreSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppstoreSample.debug.xcconfig"; path = "Target Support Files/Pods-AppstoreSample/Pods-AppstoreSample.debug.xcconfig"; sourceTree = "<group>"; };
 		685D7649E27CE383DF18CF9A /* Pods-AppstoreSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppstoreSample.release.xcconfig"; path = "Target Support Files/Pods-AppstoreSample/Pods-AppstoreSample.release.xcconfig"; sourceTree = "<group>"; };
+		CC2E16EE23725EC80090973D /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		CC39F6D6237286A800E8A57D /* AppReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewData.swift; sourceTree = "<group>"; };
 		CC435BFA235FE07D00EB4A82 /* AppstoreSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppstoreSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC435BFD235FE07D00EB4A82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC435BFF235FE07E00EB4A82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,8 +56,7 @@
 		CC435C09235FE08100EB4A82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC435C0B235FE08100EB4A82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC435C11235FE28800EB4A82 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		CC7A16B8237166EF00EAA012 /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
-		CC7A16B9237166EF00EAA012 /* ReviewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewVC.xib; sourceTree = "<group>"; };
+		CC7A16BE2372576700EAA012 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		CC9F16B5235FE7160097FF99 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
 		CC9F16B7235FE7370097FF99 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		CC9F16C3235FF5F30097FF99 /* TodayItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItemCell.swift; sourceTree = "<group>"; };
@@ -172,8 +174,8 @@
 				CCC568C323682E4400688C57 /* AppsDetailVC.swift */,
 				CCC568CC237008F100688C57 /* Ratings&Reviews.swift */,
 				CCC568CD237008F100688C57 /* Ratings&Reviews.xib */,
-				CC7A16B8237166EF00EAA012 /* ReviewVC.swift */,
-				CC7A16B9237166EF00EAA012 /* ReviewVC.xib */,
+				CC7A16BE2372576700EAA012 /* ReviewCell.xib */,
+				CC2E16EE23725EC80090973D /* ReviewCell.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 			children = (
 				CCC568BF2366E00300688C57 /* FinanceData.swift */,
 				CCC568CA236FBE3600688C57 /* AppsDetailData.swift */,
+				CC39F6D6237286A800E8A57D /* AppReviewData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,7 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC435C0A235FE08100EB4A82 /* LaunchScreen.storyboard in Resources */,
-				CC7A16BB237166EF00EAA012 /* ReviewVC.xib in Resources */,
+				CC7A16BF2372576700EAA012 /* ReviewCell.xib in Resources */,
 				CCC568BC2366B34C00688C57 /* AppItemTableViewCell.xib in Resources */,
 				CC9F16E0236130830097FF99 /* HeaderTableViewCell.xib in Resources */,
 				CC435C07235FE08100EB4A82 /* Assets.xcassets in Resources */,
@@ -364,6 +367,7 @@
 				CCC568CE237008F100688C57 /* Ratings&Reviews.swift in Sources */,
 				CC435C00235FE07E00EB4A82 /* SceneDelegate.swift in Sources */,
 				CCC568C423682E4400688C57 /* AppsDetailVC.swift in Sources */,
+				CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */,
 				CC9F16E623616F410097FF99 /* ArcadeVC.swift in Sources */,
 				CC9F1739236685AC0097FF99 /* AppsViewController.swift in Sources */,
 				CC9F170F236295BC0097FF99 /* RecommendCell.swift in Sources */,
@@ -373,7 +377,6 @@
 				CC9F17352362ED1D0097FF99 /* DetailController.swift in Sources */,
 				CCC568C02366E00300688C57 /* FinanceData.swift in Sources */,
 				CCC568CB236FBE3600688C57 /* AppsDetailData.swift in Sources */,
-				CC7A16BA237166EF00EAA012 /* ReviewVC.swift in Sources */,
 				CCC568BE2366CE0E00688C57 /* NetworkService.swift in Sources */,
 				CCC568BB2366B34C00688C57 /* AppItemTableViewCell.swift in Sources */,
 				CC9F16C4235FF5F30097FF99 /* TodayItemCell.swift in Sources */,
@@ -381,6 +384,7 @@
 				CC9F17332362E54F0097FF99 /* PopAnimator.swift in Sources */,
 				CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */,
 				CCC568C823697C3B00688C57 /* ProtocolPractice.swift in Sources */,
+				CC2E16EF23725EC80090973D /* ReviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

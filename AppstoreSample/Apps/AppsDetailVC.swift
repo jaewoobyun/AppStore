@@ -78,7 +78,7 @@ class AppsDetailVC: UIViewController {
 	
 	let networkService = NetworkService()
 	var isRequesting: Bool = false
-	
+	var noipadapp: Bool = true
 	
 	//MARK: - viewDidLoad
 	override func viewDidLoad() {
@@ -115,7 +115,7 @@ class AppsDetailVC: UIViewController {
 		
 		iPadPreview.isHidden = true
 		iphoneView.isHidden = true
-		
+		openipadPreviewIcon.isHidden = true
 		tapToRateView.isHidden = true
 		
 	}
@@ -131,11 +131,19 @@ class AppsDetailVC: UIViewController {
 	}
 	
 	@IBAction func openAction(_ sender: UIButton) {
-		
-		sender.isEnabled = false
-		openipadPreviewIcon.isHidden = true
-		iphoneView.isHidden = false
-		iPadPreview.isHidden = false
+		if noipadapp == true {
+			sender.isEnabled = false
+			openipadPreviewIcon.isHidden = true
+			iphoneView.isHidden = true
+			iPadPreview.isHidden = true
+		}
+		if noipadapp == false {
+			sender.isEnabled = true
+			openipadPreviewIcon.isHidden = true
+			iphoneView.isHidden = false
+			iPadPreview.isHidden = false
+			iPhoneOriPadLabel.text = "iPad"
+		}
 	}
 	
 	@IBAction func onPressDeveloper(_ sender: UIButton) {
@@ -239,7 +247,9 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			// jsonData 에 ipadScreenshotUrls 가 있을 때 그 안의 String 들의 갯수만큼 iPadPreviewStack 에 추가
 			if result[0].ipadScreenshotUrls != nil {
 				if let ipadScreenshotUrls = result[0].ipadScreenshotUrls, ipadScreenshotUrls.count != 0 {
-					iPhoneOriPadLabel.text = "Offers iPad"
+					iPhoneOriPadLabel.text = "Offers iPad App"
+					openipadPreviewIcon.isHidden = false
+					noipadapp = false
 					
 					for i in ipadScreenshotUrls.indices {
 						let previews: UIImageView = UIImageView(frame: CGRect.zero)
@@ -257,10 +267,13 @@ extension AppsDetailVC: NetworkServiceProtocol {
 							make.height.equalTo(iPadPreviewStack)
 						}
 					}
-				} else {
-					iPhoneOriPadLabel.text = "iPhone"
 				}
 				
+			}
+			else {
+				iPhoneOriPadLabel.text = "iPhone only"
+				openipadPreviewIcon.isHidden = true
+				noipadapp = true
 			}
 			
 			//MARK: Summary

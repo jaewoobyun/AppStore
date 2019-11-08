@@ -72,13 +72,15 @@ class AppsDetailVC: UIViewController {
 	@IBOutlet weak var copyrightLabel: UILabel!
 	@IBOutlet weak var developerWebsiteLabel: UILabel!
 	@IBOutlet weak var privacyPolicyLabel: UILabel!
-	
-	//TODO: Supports
-	//TODO: More by, You Might Also Like
+
+	//TODO: More by
+	@IBOutlet weak var collectionView: UICollectionView!
 	
 	let networkService = NetworkService()
 	var isRequesting: Bool = false
 	var noipadapp: Bool = true
+	
+	
 	
 	//MARK: - viewDidLoad
 	override func viewDidLoad() {
@@ -95,6 +97,10 @@ class AppsDetailVC: UIViewController {
 		networkService.requestGetAppReviewData(appId: appID!)
 		
 		setupLayout()
+		self.collectionView.delegate = self
+		self.collectionView.dataSource = self
+		
+		self.collectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
 		
 	}
 	
@@ -103,6 +109,12 @@ class AppsDetailVC: UIViewController {
 //
 //		}
 //	}
+	@objc func openLink(url: URL) {
+//				let url = URL.init(string: "https://m.naver.com")!
+		if UIApplication.shared.canOpenURL(url) && developerWebsiteLabel.isUserInteractionEnabled  {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
+	}
 	
 	func setupLayout() {
 		appIcon.layer.cornerRadius = 20
@@ -165,6 +177,123 @@ class AppsDetailVC: UIViewController {
 	
 }
 
+
+struct Metric {
+  static let numberOfLine: CGFloat = 1
+  static let numberOfItem: CGFloat = 2
+  
+  static let leftPadding: CGFloat = 5.0
+  static let rightPadding: CGFloat = 5.0
+  static let topPadding: CGFloat = 5.0
+  static let bottomPadding: CGFloat = 5.0
+  
+  static let itemSpacing: CGFloat = 10.0
+  static let lineSpacing: CGFloat = 10.0
+}
+
+//MARK: - CollectionView DataSource, Delegate, DelegateFlowLayout
+extension AppsDetailVC: UICollectionViewDataSource {
+	
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 4
+	}
+
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cellData = ["1", "2", "3", "4", "5"]
+		
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
+		cell.appIconImage.downloaded(from: (entry?.imImage[0].label ?? nil)!, contentMode: UIView.ContentMode.scaleAspectFill)
+		cell.appIconImage.layer.cornerRadius = 10
+		cell.appIconImage.clipsToBounds = true
+		
+//		cell.appNameLabel.text = cellData[indexPath.row]
+		cell.appNameLabel.text = entry?.imName.label
+		cell.appCategoryLabel.text = entry?.category.attributes.label
+		return cell
+	}
+
+}
+
+extension AppsDetailVC: UICollectionViewDelegate {
+	
+}
+
+extension AppsDetailVC: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let lineSpacing = Metric.lineSpacing * (Metric.numberOfLine - 1)
+		let horizontalPadding = Metric.leftPadding + Metric.rightPadding
+		let itemSpacing = Metric.itemSpacing * (Metric.numberOfItem - 1)
+		let verticalPadding = Metric.topPadding + Metric.bottomPadding
+		let width = (collectionView.frame.width - lineSpacing - horizontalPadding) / Metric.numberOfLine
+		let height = (collectionView.frame.height - itemSpacing - verticalPadding) / Metric.numberOfItem
+//		let width = self.collectionView.frame.width
+		
+		return CGSize(width: width, height: height)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return Metric.lineSpacing
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return Metric.lineSpacing
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: Metric.topPadding, left: Metric.leftPadding, bottom: Metric.bottomPadding, right: Metric.rightPadding)
+	}
+}
+
+
+
+extension UILabel {
+	func setRatingText(value: String, hasText: Bool) {
+		let doubleValue = Double(value) ?? 0.0
+		self.setRatingText(value: doubleValue, hasText: hasText)
+	}
+	
+	func setRatingText(value: Double, hasText: Bool) {
+		var starRating = ""
+		if value > 5.0 {
+			starRating = "★★★★★"
+		}
+		else if value <= 5.0 && value > 4.0 {
+			starRating = "★★★★★"
+		}
+		else if value <= 4.0 && value > 3.0 {
+			starRating = "★★★★☆"
+		}
+		else if value <= 3.0 && value > 2.0 {
+			starRating = "★★★☆☆"
+		}
+		else if value <= 2.0 && value > 1.0 {
+			starRating = "★★☆☆☆"
+		}
+		else if value <= 1.0 && value > 0.0 {
+			starRating = "★☆☆☆☆"
+		}
+		else if value == 0.0 {
+			starRating = "☆☆☆☆☆"
+		}
+		else {
+			starRating = "☆☆☆☆☆"
+		}
+		
+		if hasText == true {
+			self.text = String(value) + starRating
+		}
+		else {
+			self.text = starRating
+		}
+		
+	}
+}
+
+//MARK: - NetworkServiceProtocol
 extension AppsDetailVC: NetworkServiceProtocol {
 	
 	func failRequest() {
@@ -201,7 +330,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			//MARK: Ratings & Rank & Age
 			
 			if let averageUserRating = result[0].averageUserRating {
-				starRating.text = String(averageUserRating) + "★"
+				starRating.setRatingText(value: averageUserRating, hasText: true)
 			}//TODO: needs logic to add stars based on double
 			totalRating.text = String(describing: result[0].userRatingCount! / 1000 ) + "K Ratings"
 			
@@ -305,6 +434,15 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			languagesLabel.text = "English and Korean" //TODO: needs logic to handle what kind of languages are supported
 			ageRatingLabel.text = String(describing: result[0].contentAdvisoryRating!)
 			//		developerWebsiteLabel.text =
+			let attributedString = NSMutableAttributedString(string: "Developer Website")
+//			let url = URL(string: String(describing: result[0].trackViewURL))!
+//			if let urlString = result[0].trackViewURL {
+//				let url = URL(string: urlString)
+			let url = URL.init(string: result[0].trackViewURL ?? "https://m.naver.com")
+			attributedString.setAttributes([.link: url!], range: NSMakeRange(0, attributedString.length))
+			developerWebsiteLabel.attributedText = attributedString
+			developerWebsiteLabel.isUserInteractionEnabled = true
+			
 			copyrightLabel.text = entry?.rights.label ?? "none"
 			
 		}
@@ -313,6 +451,8 @@ extension AppsDetailVC: NetworkServiceProtocol {
 
 		
 	}
+	
+
 	
 	func responseGetReviewData(appReviewData: AppReviewData) {
 		self.appReviewData = nil
@@ -358,7 +498,6 @@ extension AppsDetailVC: NetworkServiceProtocol {
 		self.onestarRating.setProgress(totalOneRatings / 50, animated: true)
 		
 //		let reviewData:[String] = ["1","2","3","4","5"]
-//
 //		for i in 0..<reviewData.count {
 //			let view = Bundle.loadView(fromNib: "ReviewCell", withType: ReviewCell.self)
 //			ReviewCellStack.addArrangedSubview(view)
@@ -368,32 +507,26 @@ extension AppsDetailVC: NetworkServiceProtocol {
 //		}
 
 //		let entry = appReviewData.feed?.entry ?? []
-//
 //		print(appReviewData.feed?.entry?[0].author)
-//
-//
 //		for i in 0..<entry.count {
 //			if i == 0 {
 ////				entry[i]. ????
 //			}
 //		}
 		
-
-				
-		//		if let entry = appReviewData.feed?.entry, entry.count > 0 {
-		//			for i in 0..<entry.count {
-		//				if i == 0 {
-		//					//i번째 데이터가 없다. 내가원하는 데이터가 없는듯?
-		//					entry[0]
-		//				}
-		//			}
-		//		} else {
-		//			//아예 엔트리가 없다. 이떄는 통신 불안정으로 처리한다.
-		//		}
-		//
-		//		for i in 0..<(appReviewData.feed?.entry ?? []).count {
-		//
-		//		}
+//		if let entry = appReviewData.feed?.entry, entry.count > 0 {
+//			for i in 0..<entry.count {
+//				if i == 0 {
+//					//i번째 데이터가 없다. 내가원하는 데이터가 없는듯?
+//					entry[0]
+//				}
+//			}
+//		} else {
+//			//아예 엔트리가 없다. 이떄는 통신 불안정으로 처리한다.
+//		}
+//		for i in 0..<(appReviewData.feed?.entry ?? []).count {
+//
+//		}
 
 		
 		guard let feed = appReviewData.feed else {
@@ -415,29 +548,29 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			
 			reviewCellInstance.titleLabel.text = data.title?.label
 			reviewCellInstance.dateLabel.text = "Today for now?" //TODO: change
+//
+//			var starRating = ""
+//			if data.imRating?.label == "5" {
+//				starRating = "★★★★★"
+//			}
+//			else if data.imRating?.label == "4" {
+//				starRating = "★★★★☆"
+//			}
+//			else if data.imRating?.label == "3" {
+//				starRating = "★★★☆☆"
+//			}
+//			else if data.imRating?.label == "2" {
+//				starRating = "★★☆☆☆"
+//			}
+//			else if data.imRating?.label == "1" {
+//				starRating = "★☆☆☆☆"
+//			}
+//			else if data.imRating?.label == "0" {
+//				starRating = "☆☆☆☆☆"
+//			}
 			
-			var starRating = ""
-			if data.imRating?.label == "5" {
-				starRating = "★★★★★"
-			}
-			else if data.imRating?.label == "4" {
-				starRating = "★★★★☆"
-			}
-			else if data.imRating?.label == "3" {
-				starRating = "★★★☆☆"
-			}
-			else if data.imRating?.label == "2" {
-				starRating = "★★☆☆☆"
-			}
-			else if data.imRating?.label == "1" {
-				starRating = "★☆☆☆☆"
-			}
-			else if data.imRating?.label == "0" {
-				starRating = "☆☆☆☆☆"
-			}
-			
-			
-			reviewCellInstance.fiveStarLabel.text = starRating
+			let starRating = data.imRating?.label ?? "0"
+			reviewCellInstance.fiveStarLabel.setRatingText(value: starRating, hasText: false)
 			reviewCellInstance.nicknameLabel.text = data.author?.name?.label
 			reviewCellInstance.reviewContentLabel.text = data.content?.label
 			

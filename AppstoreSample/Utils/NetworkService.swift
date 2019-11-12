@@ -14,13 +14,13 @@ protocol NetworkServiceProtocol {
 	func failRequest()
 	
 	///앱데이터 요청 후 정상적으로 요청이 왔을때.
-	func responseGetData(financeData: FinanceData)
+	func responseGetData(appData: AppData)
 	func responseGetAppData(appsDetailData: AppsDetailData)
 	func responseGetReviewData(appReviewData: AppReviewData)
 }
 
 extension NetworkServiceProtocol {
-	func responseGetData(financeData: FinanceData){}
+	func responseGetData(appData: AppData){}
 	func responseGetAppData(appsDetailData: AppsDetailData){}
 	func responseGetReviewData(appReviewData: AppReviewData){}
 }
@@ -46,11 +46,11 @@ class NetworkService {
 					if let jsonData = data {
 //						print(jsonData)
 						do {
-							let financeData = try JSONDecoder().decode(FinanceData.self, from: jsonData)
-		//						return financeData
-//							print(financeData)
+							let appData = try JSONDecoder().decode(AppData.self, from: jsonData)
+		//						return appData
+//							print(appData)
 							DispatchQueue.main.async {
-								self.delegate?.responseGetData(financeData: financeData)
+								self.delegate?.responseGetData(appData: appData)
 							}
 							
 						}

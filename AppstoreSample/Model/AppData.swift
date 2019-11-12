@@ -1,5 +1,5 @@
 //
-//  FinanceData.swift
+//  AppData.swift
 //  AppstoreSample
 //
 //  Created by Nomad on 2019/10/28.
@@ -11,10 +11,11 @@ import Foundation
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
-//   let financeData = try? newJSONDecoder().decode(FinanceData.self, from: jsonData)
-//
-//// MARK: - FinanceData
-struct FinanceData: Codable {
+//   let appData = try? newJSONDecoder().decode(AppData.self, from: jsonData)
+
+
+// MARK: - AppData
+struct AppData: Codable {
     let feed: Feed
 }
 

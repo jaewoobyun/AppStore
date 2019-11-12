@@ -14,7 +14,7 @@ class AppsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var segmentedControl: UISegmentedControl!
 	
-	//	var financeData = FinanceData()
+	//	var appData = AppData()
 	
 	var isRequesting: Bool = false
 	
@@ -24,7 +24,11 @@ class AppsViewController: UIViewController {
 	
 	var refreshControl = UIRefreshControl()
 	
-	var financeData: FinanceData?
+	var appData: AppData?
+	
+	//FIXME: - ??? 질문!!
+	
+	var selectedCategoryID: String = AppCategory.Finance.getCategoryID()
 	
 	//MARK: - viewDidLoad
 	override func viewDidLoad() {
@@ -47,6 +51,7 @@ class AppsViewController: UIViewController {
 		
 		refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
 		
+		
 		//인디케이터 쇼.
 		//		self.showSpinner(onView: self.view)
 	}
@@ -56,23 +61,44 @@ class AppsViewController: UIViewController {
 		//
 	}
 	
+	@IBAction func showAllApps(_ sender: UIBarButtonItem) {
+		
+		//let navigation = self.navigationController
+		let totalAppsVC = TotalAppsTableViewController()
+		
+		//자식뷰의 클로저 핸들러를 구현한다.
+		totalAppsVC.selectHandle = { item in
+			print(item, item.getCategoryID())
+			self.navigationItem.rightBarButtonItem?.title = item.rawValue
+			self.selectedCategoryID = item.getCategoryID()
+			
+			self.networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: item.getCategoryID())
+			self.tableView.reloadData()
+		}
+		
+		let navi = UINavigationController.init(rootViewController: totalAppsVC)
+		self.present(navi, animated: true, completion: nil)
+		
+	}
+	
+	
 	@IBAction func indexChanged(_ sender: UISegmentedControl) {
 		if segmentedControl.selectedSegmentIndex == 0 {
 			print("Free Apps!")
-			self.networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: "6015")
+			self.networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: selectedCategoryID)
 			self.tableView.reloadData()
 		}
 		
 		if segmentedControl.selectedSegmentIndex == 1 {
 			print("Paid Apps")
-			self.networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: "6015")
+			self.networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: selectedCategoryID)
 			self.tableView.reloadData()
 		}
 	}
 	
 	@objc func refresh() {
 		print("refreshing!!!!")
-		self.financeData = nil
+		self.appData = nil
 		tableView.reloadData()
 		networkService.requestGetData(limit: "20")
 		
@@ -97,12 +123,12 @@ extension AppsViewController: NetworkServiceProtocol {
 	}
 	
 	
-	func responseGetData(financeData: FinanceData) {
+	func responseGetData(appData: AppData) {
 		self.removeSpinner()
 		refreshControl.endRefreshing()
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-			self.financeData = nil
-			self.financeData = financeData
+			self.appData = nil
+			self.appData = appData
 			self.tableView.reloadData()
 			self.isRequesting = false
 		}
@@ -110,7 +136,7 @@ extension AppsViewController: NetworkServiceProtocol {
 	
 //	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //		guard let appsDetailVC = segue.destination as? AppsDetailVC, let index = tableView.indexPathForSelectedRow?.row else { return }
-//		appsDetailVC.entry = self.financeData?.feed.entry?[index]
+//		appsDetailVC.entry = self.appData?.feed.entry?[index]
 //
 //		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //		let detail = storyboard.instantiateViewController(identifier: "AppsDetailVC") as! AppsDetailVC
@@ -122,21 +148,21 @@ extension AppsViewController: NetworkServiceProtocol {
 //MARK: - UITableView Delegate, Datasource
 extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		//		let financeData = networkService.getUsingCodable()
+		//		let appData = networkService.getUsingCodable()
 		
-		return financeData?.feed.entry!.count ?? 0
+		return appData?.feed.entry!.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "TestCell", for: indexPath) as! TestCell
-		cell.appName.text = financeData?.feed.entry?[indexPath.row].imName.label
-		cell.appIcon.downloaded(from: (financeData?.feed.entry?[indexPath.row].imImage[0].label)!)
+		cell.appName.text = appData?.feed.entry?[indexPath.row].imName.label
+		cell.appIcon.downloaded(from: (appData?.feed.entry?[indexPath.row].imImage[0].label)!)
 		//FIXME : -
 		
 		cell.numberLabel.text = String(indexPath.row + 1)
-//		cell.appGenre.text = (financeData?.feed.entry?[indexPath.row].category.attributes.term).map { $0.rawValue }
-		cell.appGenre.text = financeData?.feed.entry?[indexPath.row].category.attributes.term
-		cell.downloadButton.titleLabel?.text = (financeData?.feed.entry?[indexPath.row].imPrice.label)
+//		cell.appGenre.text = (appData?.feed.entry?[indexPath.row].category.attributes.term).map { $0.rawValue }
+		cell.appGenre.text = appData?.feed.entry?[indexPath.row].category.attributes.term
+		cell.downloadButton.titleLabel?.text = (appData?.feed.entry?[indexPath.row].imPrice.label)
 		//		cell.setCellData()
 		
 		
@@ -151,7 +177,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let detailVC = storyboard.instantiateViewController(withIdentifier: "AppsDetailVC") as! AppsDetailVC
-		detailVC.entry = self.financeData?.feed.entry?[indexPath.row]
+		detailVC.entry = self.appData?.feed.entry?[indexPath.row]
 		detailVC.rankNumber = indexPath.row
 		self.navigationController?.pushViewController(detailVC, animated: true)
 
@@ -164,11 +190,11 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 extension AppsViewController: UIScrollViewDelegate {
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		//		print("scrollviewdidScroll point y \(scrollView.contentOffset)")
-		//		print("all cell size = \((financeData?.feed.entry?.count ?? 0) * 80)")
+		//		print("all cell size = \((appData?.feed.entry?.count ?? 0) * 80)")
 		//		print("scrollview bottom point = \(scrollView.contentOffset.y + self.tableView.frame.size.height)")
 		
 		var endoflist = scrollView.contentOffset.y + self.tableView.frame.size.height
-		var endofdata = financeData?.feed.entry?.count ?? 0
+		var endofdata = appData?.feed.entry?.count ?? 0
 		
 		if Int(endoflist) >= (endofdata * 80) + 100 && isRequesting == false {
 			print("-----------reload refresh -----------------------")
@@ -176,7 +202,7 @@ extension AppsViewController: UIScrollViewDelegate {
 			
 			self.showSpinner(onView: self.view)
 			self.networkService.requestGetData(type: "topfreeapplications", limit: String(endofdata + 20), genre: "6015")
-			//			self.financeData = nil
+			//			self.appData = nil
 			
 		}
 	}

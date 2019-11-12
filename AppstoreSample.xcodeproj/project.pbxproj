@@ -11,6 +11,8 @@
 		CC2118DA2373D6E400829AD2 /* AppItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2118D82373D6E400829AD2 /* AppItemCollectionViewCell.swift */; };
 		CC2118DB2373D6E400829AD2 /* AppItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2118D92373D6E400829AD2 /* AppItemCollectionViewCell.xib */; };
 		CC2118DD2374F37D00829AD2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2118DC2374F37D00829AD2 /* SearchViewController.swift */; };
+		CC2118DF237A3CBF00829AD2 /* AppCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2118DE237A3CBF00829AD2 /* AppCategory.swift */; };
+		CC2118E1237A436200829AD2 /* TotalAppsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2118E0237A436200829AD2 /* TotalAppsTableViewController.swift */; };
 		CC2E16EF23725EC80090973D /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2E16EE23725EC80090973D /* ReviewCell.swift */; };
 		CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC39F6D6237286A800E8A57D /* AppReviewData.swift */; };
 		CC435BFE235FE07D00EB4A82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC435BFD235FE07D00EB4A82 /* AppDelegate.swift */; };
@@ -36,7 +38,7 @@
 		CCC568BB2366B34C00688C57 /* AppItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */; };
 		CCC568BC2366B34C00688C57 /* AppItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */; };
 		CCC568BE2366CE0E00688C57 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568BD2366CE0E00688C57 /* NetworkService.swift */; };
-		CCC568C02366E00300688C57 /* FinanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568BF2366E00300688C57 /* FinanceData.swift */; };
+		CCC568C02366E00300688C57 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568BF2366E00300688C57 /* AppData.swift */; };
 		CCC568C22367E32000688C57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568C12367E32000688C57 /* Extensions.swift */; };
 		CCC568C423682E4400688C57 /* AppsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568C323682E4400688C57 /* AppsDetailVC.swift */; };
 		CCC568C823697C3B00688C57 /* ProtocolPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568C723697C3B00688C57 /* ProtocolPractice.swift */; };
@@ -50,6 +52,8 @@
 		CC2118D82373D6E400829AD2 /* AppItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC2118D92373D6E400829AD2 /* AppItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		CC2118DC2374F37D00829AD2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CC2118DE237A3CBF00829AD2 /* AppCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCategory.swift; sourceTree = "<group>"; };
+		CC2118E0237A436200829AD2 /* TotalAppsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalAppsTableViewController.swift; sourceTree = "<group>"; };
 		CC2E16EE23725EC80090973D /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		CC39F6D6237286A800E8A57D /* AppReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReviewData.swift; sourceTree = "<group>"; };
 		CC435BFA235FE07D00EB4A82 /* AppstoreSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppstoreSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +81,7 @@
 		CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItemTableViewCell.swift; sourceTree = "<group>"; };
 		CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppItemTableViewCell.xib; sourceTree = "<group>"; };
 		CCC568BD2366CE0E00688C57 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		CCC568BF2366E00300688C57 /* FinanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceData.swift; sourceTree = "<group>"; };
+		CCC568BF2366E00300688C57 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		CCC568C12367E32000688C57 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CCC568C323682E4400688C57 /* AppsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailVC.swift; sourceTree = "<group>"; };
 		CCC568C723697C3B00688C57 /* ProtocolPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolPractice.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CC9F1738236685AC0097FF99 /* AppsViewController.swift */,
+				CC2118E0237A436200829AD2 /* TotalAppsTableViewController.swift */,
 				CCC568C323682E4400688C57 /* AppsDetailVC.swift */,
 				CC2118D82373D6E400829AD2 /* AppItemCollectionViewCell.swift */,
 				CC2118D92373D6E400829AD2 /* AppItemCollectionViewCell.xib */,
@@ -228,9 +233,10 @@
 		CCC568C9236FBE1E00688C57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CCC568BF2366E00300688C57 /* FinanceData.swift */,
+				CCC568BF2366E00300688C57 /* AppData.swift */,
 				CCC568CA236FBE3600688C57 /* AppsDetailData.swift */,
 				CC39F6D6237286A800E8A57D /* AppReviewData.swift */,
+				CC2118DE237A3CBF00829AD2 /* AppCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				CC435C13235FE28800EB4A82 /* TabBarController.swift in Sources */,
 				CC435C00235FE07E00EB4A82 /* SceneDelegate.swift in Sources */,
 				CCC568C423682E4400688C57 /* AppsDetailVC.swift in Sources */,
+				CC2118E1237A436200829AD2 /* TotalAppsTableViewController.swift in Sources */,
 				CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */,
 				CC9F16E623616F410097FF99 /* ArcadeVC.swift in Sources */,
 				CC9F1739236685AC0097FF99 /* AppsViewController.swift in Sources */,
@@ -378,9 +385,10 @@
 				CC9F16EB236182170097FF99 /* ListCell.swift in Sources */,
 				CC9F16DF236130830097FF99 /* HeaderTableViewCell.swift in Sources */,
 				CC9F17352362ED1D0097FF99 /* DetailController.swift in Sources */,
-				CCC568C02366E00300688C57 /* FinanceData.swift in Sources */,
+				CCC568C02366E00300688C57 /* AppData.swift in Sources */,
 				CCC568CB236FBE3600688C57 /* AppsDetailData.swift in Sources */,
 				CCC568BE2366CE0E00688C57 /* NetworkService.swift in Sources */,
+				CC2118DF237A3CBF00829AD2 /* AppCategory.swift in Sources */,
 				CCC568BB2366B34C00688C57 /* AppItemTableViewCell.swift in Sources */,
 				CC9F16C4235FF5F30097FF99 /* TodayItemCell.swift in Sources */,
 				CC2118DD2374F37D00829AD2 /* SearchViewController.swift in Sources */,

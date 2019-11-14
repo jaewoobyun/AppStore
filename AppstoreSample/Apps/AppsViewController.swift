@@ -163,7 +163,6 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 //		cell.appGenre.text = (appData?.feed.entry?[indexPath.row].category.attributes.term).map { $0.rawValue }
 		cell.appGenre.text = appData?.feed.entry?[indexPath.row].category.attributes.term
 		cell.downloadButton.titleLabel?.text = (appData?.feed.entry?[indexPath.row].imPrice.label)
-		//		cell.setCellData()
 		
 		
 		return cell
@@ -230,7 +229,7 @@ class TestCell: UITableViewCell {
 		downloadButton.backgroundColor = UIColor.init(netHex: 0x007AFF)
 //		downloadButton.titleColor(for: UIControl.State.normal) = UIColor.white
 //		downloadButton.title(for: UIControl.State.normal) = "받기"
-		downloadButton.layer.cornerRadius = 18
+		downloadButton.layer.cornerRadius = 15
 		downloadButton.clipsToBounds = true
 		
 		

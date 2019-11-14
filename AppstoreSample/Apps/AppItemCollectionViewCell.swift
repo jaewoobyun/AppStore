@@ -22,10 +22,11 @@ class AppItemCollectionViewCell: UICollectionViewCell {
 		appIconImage.layer.cornerRadius = 10
 		appIconImage.clipsToBounds = true
 		
-		getButton.backgroundColor = UIColor.blue //white
+		getButton.backgroundColor = UIColor.init(netHex: 0x007AFF)
 		getButton.titleLabel?.text = "GET" // or OPEN
 		getButton.layer.cornerRadius = 10
 		getButton.clipsToBounds = true
+		inAppPurchasesLabel.textColor = UIColor.lightGray
 		
 	}
 	

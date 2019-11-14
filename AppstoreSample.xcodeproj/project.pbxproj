@@ -21,6 +21,13 @@
 		CC435C07235FE08100EB4A82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC435C06235FE08100EB4A82 /* Assets.xcassets */; };
 		CC435C0A235FE08100EB4A82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC435C08235FE08100EB4A82 /* LaunchScreen.storyboard */; };
 		CC435C13235FE28800EB4A82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC435C11235FE28800EB4A82 /* TabBarController.swift */; };
+		CC51D790237B8C33003AB915 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51D78F237B8C33003AB915 /* Metrics.swift */; };
+		CC51D792237B9C68003AB915 /* CollectionBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51D791237B9C68003AB915 /* CollectionBaseVC.swift */; };
+		CC51D794237BF26E003AB915 /* RSSAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51D793237BF26E003AB915 /* RSSAppData.swift */; };
+		CC51D798237CEA7D003AB915 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51D796237CEA7D003AB915 /* TopCollectionViewCell.swift */; };
+		CC51D799237CEA7D003AB915 /* TopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC51D797237CEA7D003AB915 /* TopCollectionViewCell.xib */; };
+		CC51D79C237D2A09003AB915 /* DoubleItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51D79A237D2A09003AB915 /* DoubleItemCollectionViewCell.swift */; };
+		CC51D79D237D2A09003AB915 /* DoubleItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */; };
 		CC7A16BF2372576700EAA012 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC7A16BE2372576700EAA012 /* ReviewCell.xib */; };
 		CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B5235FE7160097FF99 /* TodayVC.swift */; };
 		CC9F16B8235FE7370097FF99 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B7235FE7370097FF99 /* GameVC.swift */; };
@@ -64,6 +71,13 @@
 		CC435C09235FE08100EB4A82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC435C0B235FE08100EB4A82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC435C11235FE28800EB4A82 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		CC51D78F237B8C33003AB915 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		CC51D791237B9C68003AB915 /* CollectionBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseVC.swift; sourceTree = "<group>"; };
+		CC51D793237BF26E003AB915 /* RSSAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSAppData.swift; sourceTree = "<group>"; };
+		CC51D796237CEA7D003AB915 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC51D797237CEA7D003AB915 /* TopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCollectionViewCell.xib; sourceTree = "<group>"; };
+		CC51D79A237D2A09003AB915 /* DoubleItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		CC7A16BE2372576700EAA012 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		CC9F16B5235FE7160097FF99 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
 		CC9F16B7235FE7370097FF99 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -129,6 +143,7 @@
 		CC435BFC235FE07D00EB4A82 /* AppstoreSample */ = {
 			isa = PBXGroup;
 			children = (
+				CC51D795237CEA43003AB915 /* Views */,
 				CC435BFD235FE07D00EB4A82 /* AppDelegate.swift */,
 				CC435C03235FE07E00EB4A82 /* Main.storyboard */,
 				CC435C11235FE28800EB4A82 /* TabBarController.swift */,
@@ -144,8 +159,20 @@
 				CC435C06235FE08100EB4A82 /* Assets.xcassets */,
 				CC435C08235FE08100EB4A82 /* LaunchScreen.storyboard */,
 				CC435C0B235FE08100EB4A82 /* Info.plist */,
+				CC51D791237B9C68003AB915 /* CollectionBaseVC.swift */,
 			);
 			path = AppstoreSample;
+			sourceTree = "<group>";
+		};
+		CC51D795237CEA43003AB915 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC51D796237CEA7D003AB915 /* TopCollectionViewCell.swift */,
+				CC51D797237CEA7D003AB915 /* TopCollectionViewCell.xib */,
+				CC51D79A237D2A09003AB915 /* DoubleItemCollectionViewCell.swift */,
+				CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CC9F16BD235FE9D40097FF99 /* Game */ = {
@@ -226,6 +253,7 @@
 				CCC568C723697C3B00688C57 /* ProtocolPractice.swift */,
 				CCC568C12367E32000688C57 /* Extensions.swift */,
 				CCC568BD2366CE0E00688C57 /* NetworkService.swift */,
+				CC51D78F237B8C33003AB915 /* Metrics.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -234,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				CCC568BF2366E00300688C57 /* AppData.swift */,
+				CC51D793237BF26E003AB915 /* RSSAppData.swift */,
 				CCC568CA236FBE3600688C57 /* AppsDetailData.swift */,
 				CC39F6D6237286A800E8A57D /* AppReviewData.swift */,
 				CC2118DE237A3CBF00829AD2 /* AppCategory.swift */,
@@ -318,6 +347,8 @@
 				CC435C07235FE08100EB4A82 /* Assets.xcassets in Resources */,
 				CC9F1710236295BC0097FF99 /* RecommendCell.xib in Resources */,
 				CC435C05235FE07E00EB4A82 /* Main.storyboard in Resources */,
+				CC51D799237CEA7D003AB915 /* TopCollectionViewCell.xib in Resources */,
+				CC51D79D237D2A09003AB915 /* DoubleItemCollectionViewCell.xib in Resources */,
 				CC9F16EC236182170097FF99 /* ListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +406,7 @@
 				CC435C13235FE28800EB4A82 /* TabBarController.swift in Sources */,
 				CC435C00235FE07E00EB4A82 /* SceneDelegate.swift in Sources */,
 				CCC568C423682E4400688C57 /* AppsDetailVC.swift in Sources */,
+				CC51D790237B8C33003AB915 /* Metrics.swift in Sources */,
 				CC2118E1237A436200829AD2 /* TotalAppsTableViewController.swift in Sources */,
 				CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */,
 				CC9F16E623616F410097FF99 /* ArcadeVC.swift in Sources */,
@@ -382,6 +414,7 @@
 				CC9F170F236295BC0097FF99 /* RecommendCell.swift in Sources */,
 				CC2118DA2373D6E400829AD2 /* AppItemCollectionViewCell.swift in Sources */,
 				CC9F16B8235FE7370097FF99 /* GameVC.swift in Sources */,
+				CC51D798237CEA7D003AB915 /* TopCollectionViewCell.swift in Sources */,
 				CC9F16EB236182170097FF99 /* ListCell.swift in Sources */,
 				CC9F16DF236130830097FF99 /* HeaderTableViewCell.swift in Sources */,
 				CC9F17352362ED1D0097FF99 /* DetailController.swift in Sources */,
@@ -391,10 +424,13 @@
 				CC2118DF237A3CBF00829AD2 /* AppCategory.swift in Sources */,
 				CCC568BB2366B34C00688C57 /* AppItemTableViewCell.swift in Sources */,
 				CC9F16C4235FF5F30097FF99 /* TodayItemCell.swift in Sources */,
+				CC51D792237B9C68003AB915 /* CollectionBaseVC.swift in Sources */,
 				CC2118DD2374F37D00829AD2 /* SearchViewController.swift in Sources */,
 				CCC568C22367E32000688C57 /* Extensions.swift in Sources */,
 				CC9F17332362E54F0097FF99 /* PopAnimator.swift in Sources */,
+				CC51D79C237D2A09003AB915 /* DoubleItemCollectionViewCell.swift in Sources */,
 				CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */,
+				CC51D794237BF26E003AB915 /* RSSAppData.swift in Sources */,
 				CCC568C823697C3B00688C57 /* ProtocolPractice.swift in Sources */,
 				CC2E16EF23725EC80090973D /* ReviewCell.swift in Sources */,
 			);

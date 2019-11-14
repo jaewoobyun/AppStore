@@ -90,7 +90,12 @@ class AppsDetailVC: UIViewController {
 		//		self.showSpinner(onView: self.view)
 		
 		//MARK: 우리가 조회할 앱의 APP ID
-		appID = entry?.id.attributes.imID
+		if entry != nil {
+			appID = entry?.id.attributes.imID
+		} else {
+			print("appID from rssfeed network service")
+			//FIXME: - HELP!!! 여기에 데이터가 들어오는 시점이 모호함!!
+		}
 		
 		networkService.delegate = self
 		networkService.requestGetAppDetailData(appId: appID!)
@@ -120,7 +125,7 @@ class AppsDetailVC: UIViewController {
 		appIcon.layer.cornerRadius = 20
 		appIcon.clipsToBounds = true
 		
-		downloadButton.layer.cornerRadius = 10 // 조정 필요
+		downloadButton.layer.cornerRadius = 15
 		downloadButton.clipsToBounds = true
 		
 		appDescription.numberOfLines = 3
@@ -178,18 +183,18 @@ class AppsDetailVC: UIViewController {
 }
 
 
-struct Metric {
-  static let numberOfLine: CGFloat = 1
-  static let numberOfItem: CGFloat = 2
-  
-  static let leftPadding: CGFloat = 5.0
-  static let rightPadding: CGFloat = 5.0
-  static let topPadding: CGFloat = 5.0
-  static let bottomPadding: CGFloat = 5.0
-  
-  static let itemSpacing: CGFloat = 10.0
-  static let lineSpacing: CGFloat = 10.0
-}
+//struct Metric {
+//  static let numberOfLine: CGFloat = 1
+//  static let numberOfItem: CGFloat = 2
+//  
+//  static let leftPadding: CGFloat = 5.0
+//  static let rightPadding: CGFloat = 5.0
+//  static let topPadding: CGFloat = 5.0
+//  static let bottomPadding: CGFloat = 5.0
+//  
+//  static let itemSpacing: CGFloat = 10.0
+//  static let lineSpacing: CGFloat = 10.0
+//}
 
 //MARK: - CollectionView DataSource, Delegate, DelegateFlowLayout
 extension AppsDetailVC: UICollectionViewDataSource {
@@ -203,16 +208,21 @@ extension AppsDetailVC: UICollectionViewDataSource {
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cellData = ["1", "2", "3", "4", "5"]
 		
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
-		cell.appIconImage.downloaded(from: (entry?.imImage[0].label ?? nil)!, contentMode: UIView.ContentMode.scaleAspectFill)
-		cell.appIconImage.layer.cornerRadius = 10
+		cell.appIconImage.layer.cornerRadius = 25
 		cell.appIconImage.clipsToBounds = true
+		if entry != nil {
+			cell.appIconImage.downloaded(from: (entry?.imImage[0].label ?? nil)!, contentMode: UIView.ContentMode.scaleAspectFill)
+			cell.appNameLabel.text = entry?.imName.label
+			cell.appCategoryLabel.text = entry?.category.attributes.label
+		}
+		else {
+			cell.appIconImage.image = self.appIcon.image
+			cell.appNameLabel.text = self.appName.text
+			cell.appCategoryLabel.text = self.category.text
+		}
 		
-//		cell.appNameLabel.text = cellData[indexPath.row]
-		cell.appNameLabel.text = entry?.imName.label
-		cell.appCategoryLabel.text = entry?.category.attributes.label
 		return cell
 	}
 
@@ -319,13 +329,17 @@ extension AppsDetailVC: NetworkServiceProtocol {
 		if let result = appsDetailData.results {
 			
 			//MARK: Header
+			//FIXME: - images are downloaded from entry -> change to results
+			if entry != nil {
+				appIcon.downloaded(from: (entry?.imImage[0].label ?? nil)!, contentMode: UIView.ContentMode.scaleAspectFill)
+			} else {
+				appIcon.downloaded(from: result[0].artworkUrl512!, contentMode: UIView.ContentMode.scaleAspectFill)
+			}
+		
+			appName.text = entry?.imName.label ?? result[0].trackCensoredName //
+			sellerName.text = entry?.imArtist.label ?? result[0].sellerName //
 			
-			appIcon.downloaded(from: (entry?.imImage[0].label ?? nil)!, contentMode: UIView.ContentMode.scaleAspectFill)
-			
-			appName.text = entry?.imName.label
-			sellerName.text = entry?.imArtist.label
-			
-			downloadButton.titleLabel?.text = entry?.imPrice.label
+			downloadButton.titleLabel?.text = entry?.imPrice.label ?? "받기?" //
 			
 			//MARK: Ratings & Rank & Age
 			
@@ -336,7 +350,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			
 			ranking.text = "No" + String(describing: rankNumber! + 1)
 //			category.text = (entry?.category.attributes.label).map { $0.rawValue } //
-			category.text = entry?.category.attributes.label
+			category.text = entry?.category.attributes.label ?? result[0].primaryGenreName //
 			
 			ageNumber.text = String(describing: result[0].contentAdvisoryRating ?? "4+") //
 			
@@ -406,7 +420,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			}
 			
 			//MARK: Summary
-			appDescription.text = entry?.summary.label
+			appDescription.text = entry?.summary.label ?? result[0].resultDescription
 			
 			
 			//MARK: Developer
@@ -429,7 +443,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 				sizeLabel.text =  String(fileSizeMB) + "MB"
 			}
 //			category.text = (entry?.category.attributes.term).map { $0.rawValue } //
-			categoryLabel.text = entry?.category.attributes.term ?? "none"
+			categoryLabel.text = entry?.category.attributes.term ?? result[0].primaryGenreName
 			compatibilityLabel.text = "Works on this iPhone" //TODO: needs logic to change the text if the software is compatible with the device
 			languagesLabel.text = "English and Korean" //TODO: needs logic to handle what kind of languages are supported
 			ageRatingLabel.text = String(describing: result[0].contentAdvisoryRating!)
@@ -443,8 +457,7 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			developerWebsiteLabel.attributedText = attributedString
 			developerWebsiteLabel.isUserInteractionEnabled = true
 			
-			copyrightLabel.text = entry?.rights.label ?? "none"
-			
+			copyrightLabel.text = entry?.rights.label ?? result[0].sellerName //
 		}
 		
 		
@@ -489,6 +502,8 @@ extension AppsDetailVC: NetworkServiceProtocol {
 					totalZeroRatings += 1
 				}
 			}
+		} else {
+			print("no entry available")
 		}
 		
 		self.fivestarRating.setProgress(totalFiveRatings / 50, animated: true)

@@ -14,8 +14,8 @@
             filePath = "AppstoreSample/Apps/AppsDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "AppstoreSample/Apps/AppsDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "responseGetAppData(appsDetailData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -114,6 +114,318 @@
             endingLineNumber = "71"
             landmarkName = "showAllApps(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C088B7AA-DAF2-466F-8A91-652CF5C5A1F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "GameVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - 75e9525438ebb34a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topPaidAppsData.getter : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - a45efff8f6e18ab6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topPaidAppsData.setter : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - ad7279b207d2d47"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topPaidAppsData.modify : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - 73dba69eb140d969"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topPaidAppsData.modify : Swift.Optional&lt;AppstoreSample.AppData&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - e392852bdb4e14"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AppstoreSample.GameVC"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "740">
+               </Location>
+               <Location
+                  uuid = "E2FB6159-41A0-4144-98D5-101A456DDF48 - 205014a20ae2dd86"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AppstoreSample.GameVC&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "684">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "GameVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - 8128d3dd6167534e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topFreeAppsData.getter : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - b79e7f801f5daaba"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topFreeAppsData.setter : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - 1616a72c4af8cd4b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topFreeAppsData.modify : Swift.Optional&lt;AppstoreSample.AppData&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - 5b015697fac0cd6d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.topFreeAppsData.modify : Swift.Optional&lt;AppstoreSample.AppData&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - e392852bdb4e14"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AppstoreSample.GameVC"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "868">
+               </Location>
+               <Location
+                  uuid = "8D2F34D9-4C3F-463A-B933-3CD610585375 - 205014a20ae2dd86"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AppstoreSample.GameVC&gt;"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "812">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23204152-C8E2-4140-B7FB-B508E45FA718"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED501513-DFD0-4ABE-B2E1-0D9C383528B6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "GameVC"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE39AFCD-B80B-4E7E-A2AF-F6D3CE58C8B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppstoreSample/Game/GameVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AE39AFCD-B80B-4E7E-A2AF-F6D3CE58C8B9 - d46e8f1c3e702c28"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "3828">
+               </Location>
+               <Location
+                  uuid = "AE39AFCD-B80B-4E7E-A2AF-F6D3CE58C8B9 - d46e8f1c3e702c28"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppstoreSample.GameVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "AppstoreSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nomad/MYAPPS/AppstoreSample/AppstoreSample/Game/GameVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "179"
+                  endingLineNumber = "179"
+                  offsetFromSymbolStart = "25264">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

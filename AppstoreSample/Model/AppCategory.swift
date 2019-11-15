@@ -107,6 +107,7 @@ import UIKit
 enum FeedType: String {
 	case topfreeapplications = "topfreeapplications"
 	case toppaidapplications = "toppaidapplications"
+	//---------
 	case TopFree = "top-free"
 	case TopPaid = "top-paid"
 	case NewApps = "new-apps-we-love"

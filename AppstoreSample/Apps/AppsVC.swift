@@ -11,10 +11,35 @@ import UIKit
 
 class AppsVC: UIViewController {
 	
+	enum DisplayType {
+		case Apps
+		case Game
+		
+		func getTitle() -> String {
+			switch self {
+			case .Apps: return "APPS"
+			case .Game: return "GAMES"
+			}
+		}
+		
+		func getAppCategory() -> AppCategory {
+			switch self {
+			case .Apps: return .AllApps
+			case .Game: return .Game
+			}
+		}
+		
+		func getFeedType() -> FeedType {
+			switch self {
+			case .Apps: return .NewApps
+			case .Game: return .NewGames
+			}
+		}
+	}
+	
+	var displayType:DisplayType = .Apps
+	
 	//MARK: - Outlets
-	
-	
-	
 	@IBOutlet weak var popularTitle: UILabel!
 	@IBOutlet weak var popularCollectionView: UICollectionView!
 	
@@ -42,46 +67,82 @@ class AppsVC: UIViewController {
 	var selectedAppId : String = ""
 	
 	
-	override class func awakeFromNib() {
-		super.awakeFromNib()
+	
+	@IBAction func seeAllButton(_ sender: AnyObject) {
+		guard let button = sender as? UIButton else { return }
+		
+		switch button.tag {
+		case 0:
+			print("0, popular")
+		case 1:
+			print("1, new we love")
+		case 2:
+			print("2, best new updates")
+		case 3:
+			print("3, top paid")
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let topCharts = storyboard.instantiateViewController(identifier: "TopCharts") as! TopChartsVC
+			topCharts.segConfig = .toppaidapplications
+			
+			if displayType == .Apps {
+				topCharts.selectedCategoryID = AppCategory.AllApps.getCategoryID()
+				
+			} else if displayType == .Game {
+				topCharts.selectedCategoryID = AppCategory.Game.getCategoryID()
+			}
+			
+			self.navigationController?.pushViewController(topCharts, animated: true)
+		case 4:
+			print("4, top free")
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let topCharts = storyboard.instantiateViewController(withIdentifier: "TopCharts") as! TopChartsVC
+			topCharts.segConfig = .topfreeapplications
+			
+			if displayType == .Apps {
+				topCharts.selectedCategoryID = AppCategory.AllApps.getCategoryID()
+			}
+			else if displayType == .Game {
+				topCharts.selectedCategoryID = AppCategory.Game.getCategoryID()
+			}
+
+			self.navigationController?.pushViewController(topCharts, animated: true)
+		default:
+			print("Unknown ????")
+			return
+		}
 	}
+	
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let tabbarVC = self.navigationController?.tabBarController
-		print(tabbarVC)
+		if self.navigationController?.tabBarController?.selectedIndex == 2 {
+			displayType = .Apps
+		} else {
+			displayType = .Game
+		}
+		
+		if #available(iOS 11.0, *) {
+			self.navigationController?.navigationBar.prefersLargeTitles = true
+			self.title = displayType.getTitle()
+		}
+		
+		popularTitle.text = "Popular \(displayType.getTitle())"
+		newWeLoveTitle.text = "New \(displayType.getTitle()) We Love"
+		bestNewUpdateTitle.text = "Best New Updates"
+		topPaidTitle.text = "Top Paid \(displayType.getTitle())"
+		topFreeTitle.text = "Top Free \(displayType.getTitle())"
+		
+		networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: displayType.getAppCategory().getCategoryID())
+		networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: displayType.getAppCategory().getCategoryID())
+		networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: displayType.getFeedType().rawValue, limit: String(20), genre: "all")
+		
+//		let tabbarVC = self.navigationController?.tabBarController
+//		print(tabbarVC)
 		
 		networkService.delegate = self
 		
-		if self.navigationController?.tabBarController?.selectedIndex == 1 {
-			if #available(iOS 11.0, *) {
-				self.navigationController?.navigationBar.prefersLargeTitles = true
-				self.title = "Games"
-			}
-			popularTitle.text = "Popular Games"
-			newWeLoveTitle.text = "New Games We Love"
-			bestNewUpdateTitle.text = "Best New Updates"
-			topPaidTitle.text = "Top Paid Games"
-			topFreeTitle.text = "Top Free Games"
-			networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
-			networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
-			networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewGames.rawValue, limit: String(20), genre: "all")
-		}
-		if self.navigationController?.tabBarController?.selectedIndex == 4 {
-			if #available(iOS 11.0, *) {
-				self.navigationController?.navigationBar.prefersLargeTitles = true
-				self.title = "Apps"
-			}
-			popularTitle.text = "Popular Apps"
-			newWeLoveTitle.text = "New Apps We Love"
-			bestNewUpdateTitle.text = "Best New Updates"
-			topPaidTitle.text = "Top Paid Apps"
-			topFreeTitle.text = "Top Free Apps"
-			networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.AllApps.getCategoryID())
-			networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.AllApps.getCategoryID())
-			networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewApps.rawValue, limit: String(20), genre: "all")
-		}
 
 //		networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
 //		networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
@@ -250,16 +311,12 @@ extension AppsVC: UICollectionViewDataSource {
 		if collectionView == newWeLoveCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
-			cell.appIconImage.layer.cornerRadius = 10
-			cell.appIconImage.clipsToBounds = true
-			cell.getButton.layer.cornerRadius = 15
-			cell.getButton.clipsToBounds = true
-			
 			cell.appIconImage.downloaded(from: (newWeLoveData?.feed.results[indexPath.row].artworkUrl100)!)
 			cell.appNameLabel.text = newWeLoveData?.feed.results[indexPath.row].name
 			cell.appCategoryLabel.text = "게임"
 			cell.getButton.titleLabel?.text = "GET" //
 			
+			cell.setCellLayer()
 			return cell
 		}
 		if collectionView == bestNewUpdatesCollectionView {
@@ -277,32 +334,21 @@ extension AppsVC: UICollectionViewDataSource {
 		if collectionView == topFreeCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
-			cell.appIconImage.layer.cornerRadius = 10
-			cell.appIconImage.clipsToBounds = true
-			cell.getButton.layer.cornerRadius = 15
-			cell.getButton.clipsToBounds = true
+			if let data = topFreeAppsData?.feed.entry?[indexPath.row] {
+				cell.setCellData(data)
+			}
 			
-			cell.appIconImage.downloaded(from: (topFreeAppsData?.feed.entry?[indexPath.row].imImage[0].label)!)
-			cell.appNameLabel.text = topFreeAppsData?.feed.entry?[indexPath.row].imName.label
-			cell.appCategoryLabel.text = topFreeAppsData?.feed.entry?[indexPath.row].category.attributes.term
-			cell.getButton.titleLabel?.text = (topFreeAppsData?.feed.entry?[indexPath.row].imPrice.label)
-			cell.inAppPurchasesLabel.text = ""
-			
+			cell.setCellLayer()
 			return cell
 		}
 		if collectionView == topPaidCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
-			cell.appIconImage.layer.cornerRadius = 10
-			cell.appIconImage.clipsToBounds = true
-			cell.getButton.layer.cornerRadius = 15
-			cell.getButton.clipsToBounds = true
+			if let data = topPaidAppsData?.feed.entry?[indexPath.row] {
+				cell.setCellData(data)
+			}
 			
-			cell.appIconImage.downloaded(from: (topPaidAppsData?.feed.entry?[indexPath.row].imImage[0].label)!)
-			cell.appNameLabel.text = topPaidAppsData?.feed.entry?[indexPath.row].imName.label
-			cell.appCategoryLabel.text = topPaidAppsData?.feed.entry?[indexPath.row].category.attributes.term
-			cell.getButton.titleLabel?.text = (topPaidAppsData?.feed.entry?[indexPath.row].imPrice.label)
-			
+			cell.setCellLayer()
 			return cell
 		}
 

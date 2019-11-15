@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppsViewController: UIViewController {
+class TopChartsVC: UIViewController {
 	
 	//MARK: - Outlets
 	@IBOutlet weak var tableView: UITableView!
@@ -28,17 +28,24 @@ class AppsViewController: UIViewController {
 	
 	//FIXME: - ??? 질문!!
 	
-	var selectedCategoryID: String = AppCategory.Finance.getCategoryID()
+	var selectedCategoryID: String = AppCategory.AllApps.getCategoryID() //기본 defaualt 가  all apps.
+	
+	var segConfig:FeedType = .topfreeapplications
 	
 	//MARK: - viewDidLoad
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		segmentedControl.selectedSegmentIndex = 0
+		//segmentedControl.selectedSegmentIndex = 0
 		
 		print("1.")
 		networkService.delegate = self
-		networkService.requestGetData()
+//		networkService.requestGetData() //
+		//TODO: - 해당 데이터를 받도록 request를 전 vc 에서 받아오는 함수 필요
+		//fetchAppropriateData(type: segConfig.rawValue)
+		
+		
+		setViewMode()
 		print("2.")
 		
 		tableView.dataSource = self
@@ -56,9 +63,23 @@ class AppsViewController: UIViewController {
 		//		self.showSpinner(onView: self.view)
 	}
 	
+	///외부에서 segConfig 설정 후 호출할것.
+	func setViewMode() {
+		if segConfig == .toppaidapplications {
+			segmentedControl.selectedSegmentIndex = 1
+		} else {
+			segmentedControl.selectedSegmentIndex = 0
+		}
+		self.indexChanged(segmentedControl)
+	}
+	
 	//MARK: - viewWillAppear
 	override func viewWillAppear(_ animated: Bool) {
 		//
+	}
+	
+	func fetchAppropriateData(type: String = FeedType.topfreeapplications.rawValue, limit: String = "20", genre: String = "") {
+		networkService.requestGetData(type: type, limit: limit, genre: selectedCategoryID)
 	}
 	
 	@IBAction func showAllApps(_ sender: UIBarButtonItem) {
@@ -108,7 +129,7 @@ class AppsViewController: UIViewController {
 }
 
 //MARK: - NetworkServiceProtocol
-extension AppsViewController: NetworkServiceProtocol {
+extension TopChartsVC: NetworkServiceProtocol {
 	func failRequest() {
 		self.removeSpinner()
 
@@ -146,7 +167,7 @@ extension AppsViewController: NetworkServiceProtocol {
 }
 
 //MARK: - UITableView Delegate, Datasource
-extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
+extension TopChartsVC: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		//		let appData = networkService.getUsingCodable()
 		
@@ -186,7 +207,7 @@ extension AppsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 //MARK: - UIScrollView Delegate
-extension AppsViewController: UIScrollViewDelegate {
+extension TopChartsVC: UIScrollViewDelegate {
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		//		print("scrollviewdidScroll point y \(scrollView.contentOffset)")
 		//		print("all cell size = \((appData?.feed.entry?.count ?? 0) * 80)")

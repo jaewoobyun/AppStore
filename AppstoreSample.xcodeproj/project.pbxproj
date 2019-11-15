@@ -39,7 +39,7 @@
 		CC9F1710236295BC0097FF99 /* RecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9F170E236295BC0097FF99 /* RecommendCell.xib */; };
 		CC9F17332362E54F0097FF99 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F17322362E54F0097FF99 /* PopAnimator.swift */; };
 		CC9F17352362ED1D0097FF99 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F17342362ED1D0097FF99 /* DetailController.swift */; };
-		CC9F1739236685AC0097FF99 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F1738236685AC0097FF99 /* AppsViewController.swift */; };
+		CC9F1739236685AC0097FF99 /* TopChartsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F1738236685AC0097FF99 /* TopChartsVC.swift */; };
 		CCC568BB2366B34C00688C57 /* AppItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */; };
 		CCC568BC2366B34C00688C57 /* AppItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */; };
 		CCC568BE2366CE0E00688C57 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568BD2366CE0E00688C57 /* NetworkService.swift */; };
@@ -88,7 +88,7 @@
 		CC9F170E236295BC0097FF99 /* RecommendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCell.xib; sourceTree = "<group>"; };
 		CC9F17322362E54F0097FF99 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		CC9F17342362ED1D0097FF99 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
-		CC9F1738236685AC0097FF99 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
+		CC9F1738236685AC0097FF99 /* TopChartsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopChartsVC.swift; sourceTree = "<group>"; };
 		CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppItemTableViewCell.swift; sourceTree = "<group>"; };
 		CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppItemTableViewCell.xib; sourceTree = "<group>"; };
 		CCC568BD2366CE0E00688C57 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 				CC9F17312362E5320097FF99 /* Utils */,
 				CC9F16CC236029800097FF99 /* HeaderCell */,
 				CC9F16BE235FE9DB0097FF99 /* Today */,
-				CC9F16BD235FE9D40097FF99 /* Game */,
 				CC9F16C0235FEA130097FF99 /* Apps */,
 				CC9F16C2235FEA230097FF99 /* Search */,
 				CC435C06235FE08100EB4A82 /* Assets.xcassets */,
@@ -178,14 +177,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CC9F16BD235FE9D40097FF99 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				CCD8B9FC237E48340078743F /* AppsVC.swift */,
-			);
-			path = Game;
-			sourceTree = "<group>";
-		};
 		CC9F16BE235FE9DB0097FF99 /* Today */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +194,8 @@
 		CC9F16C0235FEA130097FF99 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
-				CC9F1738236685AC0097FF99 /* AppsViewController.swift */,
+				CCD8B9FC237E48340078743F /* AppsVC.swift */,
+				CC9F1738236685AC0097FF99 /* TopChartsVC.swift */,
 				CC2118E0237A436200829AD2 /* TotalAppsTableViewController.swift */,
 				CCC568C323682E4400688C57 /* AppsDetailVC.swift */,
 			);
@@ -390,7 +382,7 @@
 				CC51D790237B8C33003AB915 /* Metrics.swift in Sources */,
 				CC2118E1237A436200829AD2 /* TotalAppsTableViewController.swift in Sources */,
 				CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */,
-				CC9F1739236685AC0097FF99 /* AppsViewController.swift in Sources */,
+				CC9F1739236685AC0097FF99 /* TopChartsVC.swift in Sources */,
 				CC9F170F236295BC0097FF99 /* RecommendCell.swift in Sources */,
 				CC2118DA2373D6E400829AD2 /* AppItemCollectionViewCell.swift in Sources */,
 				CC51D798237CEA7D003AB915 /* TopCollectionViewCell.swift in Sources */,

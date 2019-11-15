@@ -346,7 +346,12 @@ extension AppsDetailVC: NetworkServiceProtocol {
 			if let averageUserRating = result[0].averageUserRating {
 				starRating.setRatingText(value: averageUserRating, hasText: true)
 			}//TODO: needs logic to add stars based on double
-			totalRating.text = String(describing: result[0].userRatingCount! / 1000 ) + "K Ratings"
+			
+			if let userRatingCount = result[0].userRatingCount {
+				let ratingCount = String(userRatingCount / 1000) + "K Ratings"
+				totalRating.text = ratingCount ?? "No Ratings"
+			}
+//			totalRating.text = String(describing: result[0].userRatingCount! / 1000 ) + "K Ratings"
 			
 			ranking.text = "No" + String(describing: rankNumber! + 1)
 //			category.text = (entry?.category.attributes.label).map { $0.rawValue } //

@@ -27,7 +27,20 @@ class AppItemCollectionViewCell: UICollectionViewCell {
 		getButton.layer.cornerRadius = 10
 		getButton.clipsToBounds = true
 		inAppPurchasesLabel.textColor = UIColor.lightGray
-		
+	}
+	
+	func setCellLayer() {
+		appIconImage.layer.cornerRadius = 10
+		appIconImage.clipsToBounds = true
+		getButton.layer.cornerRadius = 15
+		getButton.clipsToBounds = true
+	}
+	
+	func setCellData(_ data: Entry) {
+		appIconImage.downloaded(from: data.imImage[0].label)
+		appNameLabel.text = data.imName.label
+		appCategoryLabel.text = data.category.attributes.term
+		getButton.titleLabel?.text = (data.imPrice.label)
 	}
 	
 }

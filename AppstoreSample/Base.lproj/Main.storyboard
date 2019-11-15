@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game-->
+        <!--Apps-->
         <scene sceneID="QLI-WC-7MI">
             <objects>
-                <viewController title="Game" id="x0n-Ng-yNt" customClass="AppsVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" id="x0n-Ng-yNt" userLabel="Apps" customClass="AppsVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ewv-Pa-wvs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,6 +34,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NH-3f-Oye">
                                                         <rect key="frame" x="318" y="10" width="47" height="30"/>
                                                         <state key="normal" title="See All"/>
+                                                        <connections>
+                                                            <action selector="seeAllButton:" destination="x0n-Ng-yNt" eventType="touchUpInside" id="axI-lg-a7v"/>
+                                                        </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-Sh-GNY">
                                                         <rect key="frame" x="0.0" y="40" width="375" height="250"/>
@@ -81,9 +84,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub6-fF-ejI">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub6-fF-ejI">
                                                         <rect key="frame" x="318" y="10" width="47" height="30"/>
                                                         <state key="normal" title="See All"/>
+                                                        <connections>
+                                                            <action selector="seeAllButton:" destination="x0n-Ng-yNt" eventType="touchUpInside" id="9yi-Y2-TVZ"/>
+                                                        </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sUH-gj-nHP">
                                                         <rect key="frame" x="0.0" y="40" width="375" height="250"/>
@@ -131,9 +137,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgt-Gw-LMx">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgt-Gw-LMx">
                                                         <rect key="frame" x="318" y="10" width="47" height="30"/>
                                                         <state key="normal" title="See All"/>
+                                                        <connections>
+                                                            <action selector="seeAllButton:" destination="x0n-Ng-yNt" eventType="touchUpInside" id="HxQ-92-7dI"/>
+                                                        </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="usl-wt-5X5">
                                                         <rect key="frame" x="0.0" y="45" width="375" height="230"/>
@@ -181,9 +190,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u56-Cb-HHU">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u56-Cb-HHU">
                                                         <rect key="frame" x="318" y="10" width="47" height="30"/>
                                                         <state key="normal" title="See All"/>
+                                                        <connections>
+                                                            <action selector="seeAllButton:" destination="x0n-Ng-yNt" eventType="touchUpInside" id="b9B-10-7cD"/>
+                                                        </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K1S-ey-h1F">
                                                         <rect key="frame" x="0.0" y="40" width="375" height="250"/>
@@ -231,9 +243,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk5-Ed-BhL">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk5-Ed-BhL">
                                                         <rect key="frame" x="318" y="10" width="47" height="30"/>
                                                         <state key="normal" title="See All"/>
+                                                        <connections>
+                                                            <action selector="seeAllButton:" destination="x0n-Ng-yNt" eventType="touchUpInside" id="55g-nb-3tp"/>
+                                                        </connections>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EcA-oi-2OW">
                                                         <rect key="frame" x="0.0" y="40" width="375" height="250"/>
@@ -315,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUn-IW-7p7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="2347"/>
+            <point key="canvasLocation" x="52" y="2324"/>
         </scene>
         <!--검색-->
         <scene sceneID="5fe-ae-kw6">
@@ -435,13 +450,13 @@
         <!--앱-->
         <scene sceneID="Ic4-dR-bkv">
             <objects>
-                <viewController title="앱" id="UdY-oD-l5a" customClass="AppsViewController" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopCharts" title="앱" id="UdY-oD-l5a" customClass="TopChartsVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nYu-zq-pZ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TopCharts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt5-Mo-BD1">
-                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RzW-bN-caR"/>
                                 </constraints>
@@ -450,7 +465,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylk-qm-qDx">
-                                <rect key="frame" x="0.0" y="94" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mrj-3e-fbt">
                                         <rect key="frame" x="40" y="9.5" width="295" height="32"/>
@@ -593,18 +608,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MV7-3U-uRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="2986"/>
+            <point key="canvasLocation" x="52" y="3018"/>
         </scene>
         <!--AppsDetailVC-->
         <scene sceneID="Vhs-x3-ZOK">
             <objects>
                 <viewController storyboardIdentifier="AppsDetailVC" title="AppsDetailVC" id="dvH-Vh-oLD" customClass="AppsDetailVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vhK-j8-oaP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaR-Aj-gpj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UbY-IN-8vm">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="2318.5"/>
@@ -1552,7 +1567,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZy-0i-kmv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="3749"/>
+            <point key="canvasLocation" x="52" y="3811"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="VSg-pF-tb2">
@@ -1568,7 +1583,6 @@
                         <segue destination="K8C-df-ox0" kind="relationship" relationship="viewControllers" id="q7A-SZ-XKu"/>
                         <segue destination="of1-Op-RON" kind="relationship" relationship="viewControllers" id="AJS-yr-6H5"/>
                         <segue destination="8Ot-Pd-JP8" kind="relationship" relationship="viewControllers" id="Z6i-Ow-svn"/>
-                        <segue destination="Jjc-L7-PGy" kind="relationship" relationship="viewControllers" id="pXf-eN-Ths"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OVk-ko-m1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1587,7 +1601,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UdY-oD-l5a" kind="relationship" relationship="rootViewController" id="SEs-Ai-07B"/>
+                        <segue destination="x0n-Ng-yNt" kind="relationship" relationship="rootViewController" id="dGD-KF-T9L"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbN-xU-WPQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1631,25 +1645,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCj-nr-neO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-303.19999999999999" y="1539.5802098950526"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="cfk-HE-JfU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jjc-L7-PGy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ao0-v6-7NZ"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EBr-Zk-Gz4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="x0n-Ng-yNt" kind="relationship" relationship="rootViewController" id="x6w-Yr-LfZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PEQ-mh-lXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2221.5999999999999" y="1485.6071964017992"/>
         </scene>
     </scenes>
     <resources>

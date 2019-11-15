@@ -133,7 +133,6 @@ class NetworkService {
 		
 	}
 	
-	
 	func requestGetAppDetailData(appId: String) {
 		let SCHEMA: String = "https://"
 		let HOST: String = "itunes.apple.com"
@@ -158,8 +157,7 @@ class NetworkService {
 					//					print("appDetailData!!:", appDetailData)
 					DispatchQueue.main.async {
 						self.delegate?.responseGetAppData(appsDetailData: appDetailData)
-						
-						
+												
 					}
 				}
 				catch let error {

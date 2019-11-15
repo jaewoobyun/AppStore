@@ -97,7 +97,7 @@
             <size key="customSize" width="318" height="166"/>
             <connections>
                 <outlet property="appCategoryLabel" destination="6IT-w5-Rah" id="Z1P-sJ-e7X"/>
-                <outlet property="appIconImageView" destination="ezf-X5-SLe" id="0dY-Ou-twh"/>
+                <outlet property="appIconImageView" destination="ezf-X5-SLe" id="eXI-xJ-o49"/>
                 <outlet property="appNameLabel" destination="5D4-F1-3Zk" id="26c-y8-Ghn"/>
                 <outlet property="getButton" destination="ENS-gW-H3D" id="AfZ-2R-Dcx"/>
             </connections>

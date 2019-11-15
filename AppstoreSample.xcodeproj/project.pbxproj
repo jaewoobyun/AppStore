@@ -30,11 +30,9 @@
 		CC51D79D237D2A09003AB915 /* DoubleItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */; };
 		CC7A16BF2372576700EAA012 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC7A16BE2372576700EAA012 /* ReviewCell.xib */; };
 		CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B5235FE7160097FF99 /* TodayVC.swift */; };
-		CC9F16B8235FE7370097FF99 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16B7235FE7370097FF99 /* GameVC.swift */; };
 		CC9F16C4235FF5F30097FF99 /* TodayItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16C3235FF5F30097FF99 /* TodayItemCell.swift */; };
 		CC9F16DF236130830097FF99 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16DD236130830097FF99 /* HeaderTableViewCell.swift */; };
 		CC9F16E0236130830097FF99 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9F16DE236130830097FF99 /* HeaderTableViewCell.xib */; };
-		CC9F16E623616F410097FF99 /* ArcadeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16E523616F410097FF99 /* ArcadeVC.swift */; };
 		CC9F16EB236182170097FF99 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F16E9236182170097FF99 /* ListCell.swift */; };
 		CC9F16EC236182170097FF99 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC9F16EA236182170097FF99 /* ListCell.xib */; };
 		CC9F170F236295BC0097FF99 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9F170D236295BC0097FF99 /* RecommendCell.swift */; };
@@ -50,6 +48,7 @@
 		CCC568C423682E4400688C57 /* AppsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568C323682E4400688C57 /* AppsDetailVC.swift */; };
 		CCC568C823697C3B00688C57 /* ProtocolPractice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568C723697C3B00688C57 /* ProtocolPractice.swift */; };
 		CCC568CB236FBE3600688C57 /* AppsDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC568CA236FBE3600688C57 /* AppsDetailData.swift */; };
+		CCD8B9FD237E48340078743F /* AppsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8B9FC237E48340078743F /* AppsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,11 +79,9 @@
 		CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		CC7A16BE2372576700EAA012 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		CC9F16B5235FE7160097FF99 /* TodayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVC.swift; sourceTree = "<group>"; };
-		CC9F16B7235FE7370097FF99 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		CC9F16C3235FF5F30097FF99 /* TodayItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItemCell.swift; sourceTree = "<group>"; };
 		CC9F16DD236130830097FF99 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CC9F16DE236130830097FF99 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
-		CC9F16E523616F410097FF99 /* ArcadeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeVC.swift; sourceTree = "<group>"; };
 		CC9F16E9236182170097FF99 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		CC9F16EA236182170097FF99 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		CC9F170D236295BC0097FF99 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
@@ -100,6 +97,7 @@
 		CCC568C323682E4400688C57 /* AppsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailVC.swift; sourceTree = "<group>"; };
 		CCC568C723697C3B00688C57 /* ProtocolPractice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolPractice.swift; sourceTree = "<group>"; };
 		CCC568CA236FBE3600688C57 /* AppsDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsDetailData.swift; sourceTree = "<group>"; };
+		CCD8B9FC237E48340078743F /* AppsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,18 +141,17 @@
 		CC435BFC235FE07D00EB4A82 /* AppstoreSample */ = {
 			isa = PBXGroup;
 			children = (
-				CC51D795237CEA43003AB915 /* Views */,
 				CC435BFD235FE07D00EB4A82 /* AppDelegate.swift */,
 				CC435C03235FE07E00EB4A82 /* Main.storyboard */,
 				CC435C11235FE28800EB4A82 /* TabBarController.swift */,
 				CC435BFF235FE07E00EB4A82 /* SceneDelegate.swift */,
+				CC51D795237CEA43003AB915 /* Views */,
 				CCC568C9236FBE1E00688C57 /* Model */,
 				CC9F17312362E5320097FF99 /* Utils */,
 				CC9F16CC236029800097FF99 /* HeaderCell */,
 				CC9F16BE235FE9DB0097FF99 /* Today */,
 				CC9F16BD235FE9D40097FF99 /* Game */,
 				CC9F16C0235FEA130097FF99 /* Apps */,
-				CC9F16C1235FEA1D0097FF99 /* Arcade */,
 				CC9F16C2235FEA230097FF99 /* Search */,
 				CC435C06235FE08100EB4A82 /* Assets.xcassets */,
 				CC435C08235FE08100EB4A82 /* LaunchScreen.storyboard */,
@@ -171,6 +168,12 @@
 				CC51D797237CEA7D003AB915 /* TopCollectionViewCell.xib */,
 				CC51D79A237D2A09003AB915 /* DoubleItemCollectionViewCell.swift */,
 				CC51D79B237D2A09003AB915 /* DoubleItemCollectionViewCell.xib */,
+				CC2118D82373D6E400829AD2 /* AppItemCollectionViewCell.swift */,
+				CC2118D92373D6E400829AD2 /* AppItemCollectionViewCell.xib */,
+				CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */,
+				CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */,
+				CC7A16BE2372576700EAA012 /* ReviewCell.xib */,
+				CC2E16EE23725EC80090973D /* ReviewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,7 +181,7 @@
 		CC9F16BD235FE9D40097FF99 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				CC9F16B7235FE7370097FF99 /* GameVC.swift */,
+				CCD8B9FC237E48340078743F /* AppsVC.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -188,7 +191,6 @@
 			children = (
 				CC9F16B5235FE7160097FF99 /* TodayVC.swift */,
 				CC9F17342362ED1D0097FF99 /* DetailController.swift */,
-				CC9F16CB236026FB0097FF99 /* TodayCells */,
 				CC9F16C3235FF5F30097FF99 /* TodayItemCell.swift */,
 				CC9F16E9236182170097FF99 /* ListCell.swift */,
 				CC9F170D236295BC0097FF99 /* RecommendCell.swift */,
@@ -204,22 +206,8 @@
 				CC9F1738236685AC0097FF99 /* AppsViewController.swift */,
 				CC2118E0237A436200829AD2 /* TotalAppsTableViewController.swift */,
 				CCC568C323682E4400688C57 /* AppsDetailVC.swift */,
-				CC2118D82373D6E400829AD2 /* AppItemCollectionViewCell.swift */,
-				CC2118D92373D6E400829AD2 /* AppItemCollectionViewCell.xib */,
-				CCC568B92366B34C00688C57 /* AppItemTableViewCell.swift */,
-				CCC568BA2366B34C00688C57 /* AppItemTableViewCell.xib */,
-				CC7A16BE2372576700EAA012 /* ReviewCell.xib */,
-				CC2E16EE23725EC80090973D /* ReviewCell.swift */,
 			);
 			path = Apps;
-			sourceTree = "<group>";
-		};
-		CC9F16C1235FEA1D0097FF99 /* Arcade */ = {
-			isa = PBXGroup;
-			children = (
-				CC9F16E523616F410097FF99 /* ArcadeVC.swift */,
-			);
-			path = Arcade;
 			sourceTree = "<group>";
 		};
 		CC9F16C2235FEA230097FF99 /* Search */ = {
@@ -228,13 +216,6 @@
 				CC2118DC2374F37D00829AD2 /* SearchViewController.swift */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		CC9F16CB236026FB0097FF99 /* TodayCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TodayCells;
 			sourceTree = "<group>";
 		};
 		CC9F16CC236029800097FF99 /* HeaderCell */ = {
@@ -409,11 +390,9 @@
 				CC51D790237B8C33003AB915 /* Metrics.swift in Sources */,
 				CC2118E1237A436200829AD2 /* TotalAppsTableViewController.swift in Sources */,
 				CC39F6D7237286A800E8A57D /* AppReviewData.swift in Sources */,
-				CC9F16E623616F410097FF99 /* ArcadeVC.swift in Sources */,
 				CC9F1739236685AC0097FF99 /* AppsViewController.swift in Sources */,
 				CC9F170F236295BC0097FF99 /* RecommendCell.swift in Sources */,
 				CC2118DA2373D6E400829AD2 /* AppItemCollectionViewCell.swift in Sources */,
-				CC9F16B8235FE7370097FF99 /* GameVC.swift in Sources */,
 				CC51D798237CEA7D003AB915 /* TopCollectionViewCell.swift in Sources */,
 				CC9F16EB236182170097FF99 /* ListCell.swift in Sources */,
 				CC9F16DF236130830097FF99 /* HeaderTableViewCell.swift in Sources */,
@@ -432,6 +411,7 @@
 				CC9F16B6235FE7160097FF99 /* TodayVC.swift in Sources */,
 				CC51D794237BF26E003AB915 /* RSSAppData.swift in Sources */,
 				CCC568C823697C3B00688C57 /* ProtocolPractice.swift in Sources */,
+				CCD8B9FD237E48340078743F /* AppsVC.swift in Sources */,
 				CC2E16EF23725EC80090973D /* ReviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

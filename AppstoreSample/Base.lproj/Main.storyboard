@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--게임-->
+        <!--Game-->
         <scene sceneID="QLI-WC-7MI">
             <objects>
-                <viewController title="게임" id="x0n-Ng-yNt" customClass="GameVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Game" id="x0n-Ng-yNt" customClass="AppsVC" customModule="AppstoreSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ewv-Pa-wvs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,16 +301,21 @@
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="Bh2-Jv-PaZ"/>
                     <connections>
+                        <outlet property="bestNewUpdateTitle" destination="2SC-fb-MI3" id="01Y-4O-2xL"/>
                         <outlet property="bestNewUpdatesCollectionView" destination="usl-wt-5X5" id="hgH-Jq-kV6"/>
-                        <outlet property="newGamesWeLoveCollectionView" destination="sUH-gj-nHP" id="PSO-17-qpv"/>
-                        <outlet property="popularCollectionView" destination="dLZ-Sh-GNY" id="t1u-In-Jc7"/>
-                        <outlet property="topFreeGamesCollectionView" destination="EcA-oi-2OW" id="k3f-79-Re9"/>
-                        <outlet property="topPaidGamesCollectionView" destination="K1S-ey-h1F" id="nXr-rU-r6l"/>
+                        <outlet property="newWeLoveCollectionView" destination="sUH-gj-nHP" id="PSO-17-qpv"/>
+                        <outlet property="newWeLoveTitle" destination="iB0-fT-4o8" id="b7V-n9-J6D"/>
+                        <outlet property="popularCollectionView" destination="dLZ-Sh-GNY" id="a1k-L5-J6b"/>
+                        <outlet property="popularTitle" destination="aMt-24-Y3g" id="0G2-dq-o4c"/>
+                        <outlet property="topFreeCollectionView" destination="EcA-oi-2OW" id="k3f-79-Re9"/>
+                        <outlet property="topFreeTitle" destination="boQ-Sf-uM8" id="g03-la-GXd"/>
+                        <outlet property="topPaidCollectionView" destination="K1S-ey-h1F" id="nXr-rU-r6l"/>
+                        <outlet property="topPaidTitle" destination="B2p-Lv-COK" id="dN8-MJ-0D8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUn-IW-7p7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-569" y="2349"/>
+            <point key="canvasLocation" x="-326" y="2347"/>
         </scene>
         <!--검색-->
         <scene sceneID="5fe-ae-kw6">
@@ -425,7 +430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aB0-Df-tM8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1013.0434782608696" y="1539.5089285714284"/>
+            <point key="canvasLocation" x="-1244" y="1540"/>
         </scene>
         <!--앱-->
         <scene sceneID="Ic4-dR-bkv">
@@ -588,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MV7-3U-uRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="2304.1979010494756"/>
+            <point key="canvasLocation" x="524" y="2986"/>
         </scene>
         <!--AppsDetailVC-->
         <scene sceneID="Vhs-x3-ZOK">
@@ -1547,7 +1552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZy-0i-kmv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="524" y="3082.3088455772117"/>
+            <point key="canvasLocation" x="524" y="3749"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="VSg-pF-tb2">
@@ -1563,6 +1568,7 @@
                         <segue destination="K8C-df-ox0" kind="relationship" relationship="viewControllers" id="q7A-SZ-XKu"/>
                         <segue destination="of1-Op-RON" kind="relationship" relationship="viewControllers" id="AJS-yr-6H5"/>
                         <segue destination="8Ot-Pd-JP8" kind="relationship" relationship="viewControllers" id="Z6i-Ow-svn"/>
+                        <segue destination="Jjc-L7-PGy" kind="relationship" relationship="viewControllers" id="pXf-eN-Ths"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OVk-ko-m1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1626,6 +1632,25 @@
             </objects>
             <point key="canvasLocation" x="-303.19999999999999" y="1539.5802098950526"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="cfk-HE-JfU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jjc-L7-PGy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ao0-v6-7NZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EBr-Zk-Gz4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="x0n-Ng-yNt" kind="relationship" relationship="rootViewController" id="x6w-Yr-LfZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEQ-mh-lXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2221.5999999999999" y="1485.6071964017992"/>
+        </scene>
     </scenes>
     <resources>
         <image name="apps" width="22" height="22"/>
@@ -1640,4 +1665,7 @@
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <image name="today" width="18" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rti-GA-icU"/>
+    </inferredMetricsTieBreakers>
 </document>

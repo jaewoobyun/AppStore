@@ -64,15 +64,18 @@ class NetworkService {
 						self.delegate?.responseGetData(appData: appData)
 						
 						if genre == AppCategory.Game.getCategoryID() && type == "topfreeapplications" {
-							//								self.delegate?.topFreeGames(gameData: appData)
-							
 							self.delegate?.responseGetData(appData: appData, genre:genre, isFree: true)
 						}
 						if genre == AppCategory.Game.getCategoryID() && type == "toppaidapplications" {
-							//								self.delegate?.topPaidGames(gameData: appData)
-							
 							self.delegate?.responseGetData(appData: appData, genre:genre, isFree: false)
 						}
+						if genre == AppCategory.AllApps.getCategoryID() && type == "topfreeapplications" {
+							self.delegate?.responseGetData(appData: appData, genre: genre, isFree: true)
+						}
+						if genre == AppCategory.AllApps.getCategoryID() && type == "toppaidapplications" {
+							self.delegate?.responseGetData(appData: appData, genre: genre, isFree: false)
+						}
+						
 					}
 					
 				}
@@ -109,6 +112,9 @@ class NetworkService {
 					DispatchQueue.main.async {
 //						self.delegate?.responseGetFeedData(rssappdata: rssappData)
 						if feedType == FeedType.NewGames.rawValue {
+							self.delegate?.responseGetRSSData(rssData: rssappData, countryCode: countryCode, mediaType: mediaType, feedType: feedType, limit: limit, genre: genre)
+						}
+						if feedType == FeedType.NewApps.rawValue {
 							self.delegate?.responseGetRSSData(rssData: rssappData, countryCode: countryCode, mediaType: mediaType, feedType: feedType, limit: limit, genre: genre)
 						}
 						

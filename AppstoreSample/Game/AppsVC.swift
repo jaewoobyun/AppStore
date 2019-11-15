@@ -9,80 +9,123 @@
 import Foundation
 import UIKit
 
-class GameVC: UIViewController {
+class AppsVC: UIViewController {
 	
 	//MARK: - Outlets
 	
+	
+	
+	@IBOutlet weak var popularTitle: UILabel!
 	@IBOutlet weak var popularCollectionView: UICollectionView!
 	
-	@IBOutlet weak var newGamesWeLoveCollectionView: UICollectionView!
+	@IBOutlet weak var newWeLoveTitle: UILabel!
+	@IBOutlet weak var newWeLoveCollectionView: UICollectionView!
 	
+	@IBOutlet weak var bestNewUpdateTitle: UILabel!
 	@IBOutlet weak var bestNewUpdatesCollectionView: UICollectionView!
 	
-	@IBOutlet weak var topPaidGamesCollectionView: UICollectionView!
+	@IBOutlet weak var topPaidTitle: UILabel!
+	@IBOutlet weak var topPaidCollectionView: UICollectionView!
 	
-	@IBOutlet weak var topFreeGamesCollectionView: UICollectionView!
+	@IBOutlet weak var topFreeTitle: UILabel!
+	@IBOutlet weak var topFreeCollectionView: UICollectionView!
 	
 	//MARK: - Properties
 	var appData: AppData?
 	
 	var topPaidAppsData: AppData?
 	var topFreeAppsData: AppData?
-	var newGamesWeLoveData: RssAppData?
+	var newWeLoveData: RssAppData?
 	
 	let networkService = NetworkService()
 	
 	var selectedAppId : String = ""
 	
+	
+	override class func awakeFromNib() {
+		super.awakeFromNib()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		if #available(iOS 11.0, *) {
-			self.navigationController?.navigationBar.prefersLargeTitles = true
-		}
+		let tabbarVC = self.navigationController?.tabBarController
+		print(tabbarVC)
 		
 		networkService.delegate = self
-		networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
 		
-		networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
-		
-		networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewGames.rawValue, limit: String(20), genre: "all")
+		if self.navigationController?.tabBarController?.selectedIndex == 1 {
+			if #available(iOS 11.0, *) {
+				self.navigationController?.navigationBar.prefersLargeTitles = true
+				self.title = "Games"
+			}
+			popularTitle.text = "Popular Games"
+			newWeLoveTitle.text = "New Games We Love"
+			bestNewUpdateTitle.text = "Best New Updates"
+			topPaidTitle.text = "Top Paid Games"
+			topFreeTitle.text = "Top Free Games"
+			networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
+			networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
+			networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewGames.rawValue, limit: String(20), genre: "all")
+		}
+		if self.navigationController?.tabBarController?.selectedIndex == 4 {
+			if #available(iOS 11.0, *) {
+				self.navigationController?.navigationBar.prefersLargeTitles = true
+				self.title = "Apps"
+			}
+			popularTitle.text = "Popular Apps"
+			newWeLoveTitle.text = "New Apps We Love"
+			bestNewUpdateTitle.text = "Best New Updates"
+			topPaidTitle.text = "Top Paid Apps"
+			topFreeTitle.text = "Top Free Apps"
+			networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.AllApps.getCategoryID())
+			networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.AllApps.getCategoryID())
+			networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewApps.rawValue, limit: String(20), genre: "all")
+		}
+
+//		networkService.requestGetData(type: "topfreeapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
+//		networkService.requestGetData(type: "toppaidapplications", limit: String(20), genre: AppCategory.Game.getCategoryID())
+//		networkService.requestGetFeedAppData(countryCode: "kr", mediaType: "ios-apps", feedType: FeedType.NewGames.rawValue, limit: String(20), genre: "all")
 		
 		popularCollectionView.delegate = self
 		popularCollectionView.dataSource = self
 		
-		newGamesWeLoveCollectionView.delegate = self
-		newGamesWeLoveCollectionView.dataSource = self
+		newWeLoveCollectionView.delegate = self
+		newWeLoveCollectionView.dataSource = self
 		
 		bestNewUpdatesCollectionView.delegate = self
 		bestNewUpdatesCollectionView.dataSource = self
 		
-		topFreeGamesCollectionView.delegate = self
-		topFreeGamesCollectionView.dataSource = self
+		topFreeCollectionView.delegate = self
+		topFreeCollectionView.dataSource = self
 		
-		topPaidGamesCollectionView.delegate = self
-		topPaidGamesCollectionView.dataSource = self
+		topPaidCollectionView.delegate = self
+		topPaidCollectionView.dataSource = self
 		
 		popularCollectionView.register(UINib(nibName: "TopCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TopCollectionViewCell")
-		newGamesWeLoveCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
+		newWeLoveCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
 		bestNewUpdatesCollectionView.register(UINib(nibName: "DoubleItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DoubleItemCollectionViewCell")
-		topFreeGamesCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
-		topPaidGamesCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
+		topFreeCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
+		topPaidCollectionView.register(UINib(nibName: "AppItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AppItemCollectionViewCell")
 		
 		self.popularCollectionView.reloadData()
-		self.newGamesWeLoveCollectionView.reloadData()
+		self.newWeLoveCollectionView.reloadData()
 		self.bestNewUpdatesCollectionView.reloadData()
-		self.topFreeGamesCollectionView.reloadData()
-		self.topPaidGamesCollectionView.reloadData()
+		self.topFreeCollectionView.reloadData()
+		self.topPaidCollectionView.reloadData()
 	}
 	
 }
 
 //MARK: - NetworkServiceProtocol
-extension GameVC: NetworkServiceProtocol {
+extension AppsVC: NetworkServiceProtocol {
 	func failRequest() {
 		DispatchQueue.main.async {
 			self.popularCollectionView.reloadData()
+			self.newWeLoveCollectionView.reloadData()
+			self.bestNewUpdatesCollectionView.reloadData()
+			self.topPaidCollectionView.reloadData()
+			self.topFreeCollectionView.reloadData()
 		}
 	}
 	
@@ -104,22 +147,35 @@ extension GameVC: NetworkServiceProtocol {
 			if isFree {
 				self.topFreeAppsData = nil
 				self.topFreeAppsData = appData
-				self.topFreeGamesCollectionView.reloadData()
+				self.topFreeCollectionView.reloadData()
 			} else {
 				self.topPaidAppsData = nil
 				self.topPaidAppsData = appData
-				self.topPaidGamesCollectionView.reloadData()
+				self.topPaidCollectionView.reloadData()
 			}
 			
-		} else if genre == AppCategory.Finance.getCategoryID() {
+		}
+		else if genre == AppCategory.AllApps.getCategoryID() {
+			self.appData = nil
+			self.appData = appData
+			self.popularCollectionView.reloadData()
 			
+			if isFree {
+				self.topFreeAppsData = nil
+				self.topFreeAppsData = appData
+				self.topFreeCollectionView.reloadData()
+			} else {
+				self.topPaidAppsData = nil
+				self.topPaidAppsData = appData
+				self.topPaidCollectionView.reloadData()
+			}
 		}
 	}
 	
 	func responseGetRSSData(rssData: RssAppData, countryCode: String, mediaType: String, feedType: String, limit: String, genre: String) {
-		self.newGamesWeLoveData = nil
-		self.newGamesWeLoveData = rssData
-		self.newGamesWeLoveCollectionView.reloadData()
+		self.newWeLoveData = nil
+		self.newWeLoveData = rssData
+		self.newWeLoveCollectionView.reloadData()
 		self.bestNewUpdatesCollectionView.reloadData()
 		}
 	}
@@ -138,7 +194,7 @@ extension GameVC: NetworkServiceProtocol {
 
 
 //MARK: - UICollectionViewDataSource
-extension GameVC: UICollectionViewDataSource {
+extension AppsVC: UICollectionViewDataSource {
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
@@ -147,16 +203,16 @@ extension GameVC: UICollectionViewDataSource {
 		if collectionView == popularCollectionView {
 			return appData?.feed.entry!.count ?? 0
 		}
-		else if collectionView == newGamesWeLoveCollectionView {
-			return newGamesWeLoveData?.feed.results.count ?? 0
+		else if collectionView == newWeLoveCollectionView {
+			return newWeLoveData?.feed.results.count ?? 0
 		}
 		else if collectionView == bestNewUpdatesCollectionView {
-			return newGamesWeLoveData?.feed.results.count ?? 0
+			return newWeLoveData?.feed.results.count ?? 0
 		}
-		else if collectionView == topFreeGamesCollectionView {
+		else if collectionView == topFreeCollectionView {
 			return topFreeAppsData?.feed.entry!.count ?? 0
 		}
-		else if collectionView == topPaidGamesCollectionView {
+		else if collectionView == topPaidCollectionView {
 			return topPaidAppsData?.feed.entry!.count ?? 0
 		}
 		
@@ -191,7 +247,7 @@ extension GameVC: UICollectionViewDataSource {
 
 			return cell
 		}
-		if collectionView == newGamesWeLoveCollectionView {
+		if collectionView == newWeLoveCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
 			cell.appIconImage.layer.cornerRadius = 10
@@ -199,8 +255,8 @@ extension GameVC: UICollectionViewDataSource {
 			cell.getButton.layer.cornerRadius = 15
 			cell.getButton.clipsToBounds = true
 			
-			cell.appIconImage.downloaded(from: (newGamesWeLoveData?.feed.results[indexPath.row].artworkUrl100)!)
-			cell.appNameLabel.text = newGamesWeLoveData?.feed.results[indexPath.row].name
+			cell.appIconImage.downloaded(from: (newWeLoveData?.feed.results[indexPath.row].artworkUrl100)!)
+			cell.appNameLabel.text = newWeLoveData?.feed.results[indexPath.row].name
 			cell.appCategoryLabel.text = "게임"
 			cell.getButton.titleLabel?.text = "GET" //
 			
@@ -209,8 +265,8 @@ extension GameVC: UICollectionViewDataSource {
 		if collectionView == bestNewUpdatesCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoubleItemCollectionViewCell", for: indexPath) as! DoubleItemCollectionViewCell
 			
-			cell.appIconImageView.downloaded(from: (newGamesWeLoveData?.feed.results[indexPath.row].artworkUrl100)!, contentMode: UIView.ContentMode.scaleAspectFill)
-			cell.appNameLabel.text = newGamesWeLoveData?.feed.results[indexPath.row].name
+			cell.appIconImageView.downloaded(from: (newWeLoveData?.feed.results[indexPath.row].artworkUrl100)!, contentMode: UIView.ContentMode.scaleAspectFill)
+			cell.appNameLabel.text = newWeLoveData?.feed.results[indexPath.row].name
 //			cell.appCategoryLabel.text = newGamesWeLoveData?.feed.results[indexPath.row].genres
 //			let categories = newGamesWeLoveData?.feed.results[indexPath.row].genres[indexPath.row].name
 			//FIXME: - find all the genre names and append it to the cell.appCategoryLabel.text
@@ -218,7 +274,7 @@ extension GameVC: UICollectionViewDataSource {
 			
 			return cell
 		}
-		if collectionView == topFreeGamesCollectionView {
+		if collectionView == topFreeCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
 			cell.appIconImage.layer.cornerRadius = 10
@@ -234,7 +290,7 @@ extension GameVC: UICollectionViewDataSource {
 			
 			return cell
 		}
-		if collectionView == topPaidGamesCollectionView {
+		if collectionView == topPaidCollectionView {
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppItemCollectionViewCell", for: indexPath) as! AppItemCollectionViewCell
 			
 			cell.appIconImage.layer.cornerRadius = 10
@@ -268,7 +324,7 @@ extension GameVC: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionView Delegate
-extension GameVC: UICollectionViewDelegate {
+extension AppsVC: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let detailVC = storyboard.instantiateViewController(withIdentifier: "AppsDetailVC") as! AppsDetailVC
@@ -278,20 +334,20 @@ extension GameVC: UICollectionViewDelegate {
 			detailVC.rankNumber = indexPath.row
 			self.navigationController?.pushViewController(detailVC, animated: true)
 		}
-		if collectionView == newGamesWeLoveCollectionView {
-			detailVC.appID = self.newGamesWeLoveData?.feed.results[indexPath.row].id
+		if collectionView == newWeLoveCollectionView {
+			detailVC.appID = self.newWeLoveData?.feed.results[indexPath.row].id
 			self.navigationController?.pushViewController(detailVC, animated: true)
 		}
 		if collectionView == bestNewUpdatesCollectionView {
-			detailVC.appID = self.newGamesWeLoveData?.feed.results[indexPath.row].id
+			detailVC.appID = self.newWeLoveData?.feed.results[indexPath.row].id
 			self.navigationController?.pushViewController(detailVC, animated: true)
 		}
-		if collectionView == topPaidGamesCollectionView {
+		if collectionView == topPaidCollectionView {
 			detailVC.entry = self.topPaidAppsData?.feed.entry?[indexPath.row]
 			detailVC.rankNumber = indexPath.row
 			self.navigationController?.pushViewController(detailVC, animated: true)
 		}
-		if collectionView == topFreeGamesCollectionView {
+		if collectionView == topFreeCollectionView {
 			detailVC.entry = self.topFreeAppsData?.feed.entry?[indexPath.row]
 			detailVC.rankNumber = indexPath.row
 			self.navigationController?.pushViewController(detailVC, animated: true)
@@ -305,7 +361,7 @@ extension GameVC: UICollectionViewDelegate {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension GameVC: UICollectionViewDelegateFlowLayout {
+extension AppsVC: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let lineSpacing = Metric.lineSpacing * (Metric.numberOfLine - 1)
